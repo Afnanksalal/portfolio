@@ -1,0 +1,195 @@
+.contact h2 {
+    margin-bottom: 1rem;
+}
+
+.contact p {
+    width: 35%;
+    margin: 0 auto 1.5rem;
+    text-align: center;
+}
+
+.container.contact__container {
+    width: 60%;
+    display: grid;
+    grid-template-columns: 30% 58%;
+    gap: 12%;
+    padding-top: 1.5rem;
+}
+
+.contact__options {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact__option {
+    text-align: center;
+    padding: 1.5rem 1.8rem;
+    background: var(--secondary-bg-color);
+    border-radius: .5rem;
+    transition: var(--transition);
+}
+
+.contact__option:hover {
+    box-shadow: 0px 0px 7px 2px rgba(74, 189, 255, 0.3);
+    background-color: var(--overlay-bg-color);
+}
+
+.contact__option-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.contact__option h4 {
+    font-size: 17px;
+}
+
+.contact__option a {
+    font-size: 15px;
+}
+
+.contact__option-icon {
+    font-size: 1.5rem;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    
+}
+
+input,
+textarea {
+    padding: 1.2rem;
+    resize: none;
+    color: var(--light-color-variant);
+    background-color: var(--secondary-bg-color);
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+}
+
+input:focus ~ label,
+input:valid ~ label,
+textarea:focus ~ label,
+textarea:valid ~ label {
+    transform: translate(-15px, -27px );
+    background-color: #1623360c;
+    backdrop-filter: blur(15px);
+    font-size: 12px;
+}
+
+.name1,
+.email1,
+.subject1,
+.message1 {
+    position: relative;
+}
+
+.subject1,
+.message1 {
+    grid-column: span 2;
+}
+
+label {
+    position: absolute;
+    top: 17px;
+    left: 20px;
+    padding: 1.2rem;
+    color: var(--light-color);
+    font-size: 15px;
+    font-weight: 100;
+    padding: 0 4px;
+    border-radius: 2px;
+    pointer-events: none;
+    transition: var(--transition);
+}
+
+form button {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white-color)!important;
+}
+
+.send__failed,
+.send__success {
+    display: none;
+    padding: 5px;
+    background: rgb(255, 32, 32, 0.5);
+}
+
+.send__success {
+    background: rgb(0, 128, 0, 0.8);
+}
+
+.send__failed.span,
+.send__success.span {
+    display: block;
+    grid-column: span 2;
+}
+
+/* =================== MEDIA QUERIES (LARGER DEVICES) ============== */
+@media screen and (max-width: 1024px) {
+    .contact p {
+        width: 65%;
+    }
+
+    .container.contact__container {
+        width: var(--container-width-md);
+        grid-template-columns: 30% 63%;
+        gap: 7%;
+    }
+}
+
+/* =================== MEDIA QUERIES (TABLET DEVICES) ============== */
+@media screen and (max-width: 800px) {
+    .container.contact__container {
+        grid-template-columns: 1fr;
+        width: var(--container-width-md);
+        gap: 1.8rem;
+    }
+
+    .contact__options {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+/* =================== MEDIA QUERIES (SMALL DEVICES) ============== */
+@media screen and (max-width: 600px) {
+    .contact__options {
+        gap: 1rem;
+    }
+
+    .contact p {
+        width: var(--container-width-sm);
+    }
+
+    .container.contact__container {
+        width: var(--container-width-sm);
+    }
+
+    .contact__options {
+        flex-direction: column;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }    
+    
+}
