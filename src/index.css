@@ -1,261 +1,167 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    box-sizing: border-box;
-    list-style: none;
-    text-decoration: none;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 8 8% 2%;
+    --foreground: 280 5% 96%;
+
+    --card: 8 8% 3%;
+    --card-foreground: 280 5% 96%;
+
+    --popover: 8 8% 3%;
+    --popover-foreground: 280 5% 96%;
+
+    --primary: 271 91% 65%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 271 15% 8%;
+    --secondary-foreground: 280 5% 96%;
+
+    --muted: 271 15% 8%;
+    --muted-foreground: 280 5% 65%;
+
+    --accent: 271 15% 8%;
+    --accent-foreground: 280 5% 96%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 271 15% 8%;
+    --input: 271 15% 8%;
+    --ring: 271 91% 65%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 8 8% 2%;
+    --sidebar-foreground: 280 5% 96%;
+    --sidebar-primary: 271 91% 65%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 271 15% 8%;
+    --sidebar-accent-foreground: 280 5% 96%;
+    --sidebar-border: 271 15% 8%;
+    --sidebar-ring: 271 91% 65%;
+  }
 }
 
-:root {
-    /* background-colors */
-    --primary-bg-color: #0e1218;
-    --secondary-bg-color: #162336;
-    --overlay-bg-color: #162336b3;
+@layer base {
+  * {
+    @apply border-border;
+  }
 
-    /* text-colors */
-    --primary-color: #4db5ff;
-    --primary-color-variant: #0870ba;
-    --light-color: #ffffff99;
-    --light-color-variant : #ffffffd2;
-    --white: #ffffff;
+  body {
+    @apply bg-background text-foreground font-inter;
+    background: radial-gradient(ellipse at top left, #2d1b69 0%, #11082f 30%, #0a0512 70%, #130820 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-    --container-width-lg: 75%;
-    --container-width-md: 86%;
-    --container-width-sm: 90%;
+  /* Fix font rendering and clipping issues */
+  .font-dancing,
+  .font-caveat {
+    line-height: 1.3;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+  }
 
-    --transition: all .4s ease;
-    --shadow: 2px 0px 7px 1px #4abdff4d;;
+  .bento-card {
+    @apply bg-gradient-to-br from-violet-950/40 to-purple-950/60 backdrop-blur-sm border border-violet-800/40 rounded-2xl p-6 transition-all duration-300 hover:scale-[1.02] hover:border-violet-700/60 hover:shadow-2xl hover:shadow-violet-500/30;
+  }
+
+  .glass-card {
+    @apply bg-black/30 backdrop-blur-md border border-violet-800/30 rounded-2xl;
+  }
+
+  .macos-icon {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center text-2xl transition-all duration-300 hover:scale-110 hover:rotate-3 shadow-lg;
+  }
+
+  .floating-icon {
+    @apply absolute w-16 h-16 bg-gradient-to-br rounded-2xl flex items-center justify-center animate-float shadow-2xl;
+  }
+
+  .floating-nav {
+    @apply fixed top-4 left-4 right-4 z-50 glass-card border border-violet-800/30 backdrop-blur-xl rounded-2xl mx-auto max-w-7xl;
+  }
 }
 
-html {
-    scroll-behavior: smooth;
+/* Enhanced animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
 }
 
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
+  66% {
+    transform: translateY(-20px) rotate(1deg);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 10s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
 ::-webkit-scrollbar {
-    width: 0.5rem;
-    
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--overlay-bg-color);
+  background: rgba(139, 92, 246, 0.1);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--primary-color-variant);
-    transition: var(--transition);
-    border-radius: 5px;
-    max-height: 5px;
+  background: rgba(139, 92, 246, 0.5);
+  border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover{
-    background: var(--primary-color)
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--primary-bg-color);
-    color: var(--light-color-variant);
-    line-height: 1.7;
-}
-
-.no-scroll {
-    overflow: hidden;
-}
-
-/* ================== GENERAL STYLES =============== */
-.container {
-    width: var(--container-width-lg);
-    margin: 0 auto;
-}
-
-h1, h2, h3, h4, h5 {
-    font-weight: 500;
-}
-
-h1 {
-    font-size: 2.5rem;
-    color: var(--white);
-}
-
-h3 {
-    font-size: 1.5rem;
-}
-
-section {
-    padding-top: 10rem;
-}
-
-section > h2, section > h5 {
-    text-align: center;
-    color: var(--light-color);
-}
-
-section > h2 {
-    color: var(--primary-color);
-    margin-bottom: 4rem;
-    font-size: 2rem;
-}
-
-.text-light {
-    color: var(--light-color);
-}
-
-.text-primary {
-    color: var(--primary-color-variant);
-}
-
-a {
-    color: var(--white-color);
-    transition: var(--transition)!important;
-}
-
-a:hover {
-    color: var(--primary-color-variant);
-}
-
-.btn {
-    width: max-content;
-    display: inline-block;
-    color: var(--white-color)!important;
-    padding: 0.75rem 1.2rem;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: var(--transition)!important;
-    position: relative;
-    overflow: hidden;
-    text-shadow: 0px 2px 5px rgba(255, 255, 255, 0.51);
-    letter-spacing: 1px;
-}
-
-.btn:hover {
-    color: var(--white-color);
-    background-color: var(--primary-color);
-    border-color: var(--primary-color-variant);
-}
-
-.btn-primary {
-    background-color: var(--primary-color-variant);
-}
-
-.running-light {
-    position: absolute;
-}
-
-.running-light:nth-child(1) {
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--primary-color));
-    animation: anim1 1s linear infinite;
-}
-
-@keyframes anim1 {
-    0% {
-        left: -100%;
-    }
-    50%, 100% {
-        left: 100%;
-    }
-}
-
-.running-light:nth-child(2) {
-    top: -100%;
-    right: 0%;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, var(--primary-color));
-    animation: anim2 1s linear infinite;
-    animation-delay: 0.25s;
-}
-
-@keyframes anim2 {
-    0% {
-        top: -100%;
-    }
-    50%, 100% {
-        top: 100%;
-    }
-}
-
-.running-light:nth-child(3) {
-    bottom: 0;
-    right: -100%;
-    height: 2px;
-    width: 100%;
-    background: linear-gradient(270deg, transparent, var(--primary-color));
-    animation: anim3 1s linear infinite;
-    animation-delay: 0.5s;
-}
-
-@keyframes anim3 {
-    0% {
-        right: -100%;
-    }
-    50%, 100% {
-        right: 100%;
-    }
-}
-
-.running-light:nth-child(4) {
-    bottom: -100%;
-    left: 0%;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(360deg, transparent, var(--primary-color));
-    animation: anim4 1s linear infinite;
-    animation-delay: 0.75s;
-}
-
-@keyframes anim4 {
-    0% {
-        bottom: -100%;
-    }
-    50%, 100% {
-        bottom: 100%;
-    }
-}
-
-img {
-    display: block;
-    width: 100%;
-    object-fit: cover;
-}
-
-
-/* ================== MEDIA QUERIES (MEDIUM DEVICES) =============== */
-@media screen and (max-width: 1024px) {
-    .container {
-        width: var(--container-width-md);
-    }
-
-    section {
-        padding-top: 6rem;
-    }
-
-    section,
-    .container {
-        overflow: hidden;
-    }
-
-}
-/* ================== MEDIA QUERIES (Tablet DEVICES) =============== */
-@media screen and (max-width: 800px) {
-    ::-webkit-scrollbar {
-        display: none;
-    }
-}
-/* ================== MEDIA QUERIES (SMALL DEVICES) =============== */
-@media screen and (max-width: 600px) {
-    .container {
-        width: var(--container-width-sm);
-    }
-
-    section > h2 {
-        margin-bottom: 2rem;
-    }
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.7);
 }
