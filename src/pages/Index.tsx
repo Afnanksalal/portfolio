@@ -267,38 +267,41 @@ const Index = () => {
               Featured Projects
             </h2>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-8 items-stretch">
               {projects.map((project, index) => (
-                <Card key={index} className="bento-card group overflow-hidden">
-                  <div className="relative mb-4">
+                <Card key={index} className="bento-card group overflow-hidden flex flex-col">
+                  {/* Removed the fixed height container and rely on image scaling */}
+                  <div className="relative mb-4 w-full overflow-hidden flex-shrink-0">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-48 object-cover rounded-lg transition-transform duration-300"
+                      className="w-full h-auto object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0" />
                   </div>
 
-                  <h3 className="text-xl font-caveat font-semibold mb-2 text-primary py-1">{project.title}</h3>
-                  <p className="text-foreground mb-4 leading-relaxed">{project.description}</p>
+                  <div className="flex flex-col flex-grow">
+                    <h3 className="text-xl font-caveat font-semibold mb-2 text-primary py-1">{project.title}</h3>
+                    <p className="text-foreground mb-4 leading-relaxed flex-grow">{project.description}</p>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech, techIndex) => (
-                      <Badge key={techIndex} className="bg-card/50 text-primary border-primary/30 text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tech.map((tech, techIndex) => (
+                        <Badge key={techIndex} className="bg-card/50 text-primary border-primary/30 text-xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
 
-                  <div className="flex gap-3">
-                    <Button size="sm" className="bg-card hover:bg-card/80 text-foreground">
-                      <Github size={16} className="mr-2" />
-                      Code
-                    </Button>
-                    <Button size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-background">
-                      <ExternalLink size={16} className="mr-2" />
-                      Live Demo
-                    </Button>
+                    <div className="flex gap-3 mt-auto">
+                      <Button size="sm" className="bg-card hover:bg-card/80 text-foreground">
+                        <Github size={16} className="mr-2" />
+                        Code
+                      </Button>
+                      <Button size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-background">
+                        <ExternalLink size={16} className="mr-2" />
+                        Live Demo
+                      </Button>
+                    </div>
                   </div>
                 </Card>
               ))}
