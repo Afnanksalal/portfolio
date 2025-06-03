@@ -73,7 +73,7 @@ const Index = () => {
   if (!mounted) return null;
 
   return (
-    <div className="min-h-screen relative text-white overflow-x-hidden bg-gradient-to-br from-purple-950 to-black">
+    <div className="min-h-screen relative text-foreground overflow-x-hidden bg-background">
       <div className="absolute inset-0 z-[-1] overflow-hidden">
         <div className="floating-icon top-[10vh] left-[5vw] from-violet-600 to-purple-600 animate-float">
           <Brain size={28} className="text-white" />
@@ -105,51 +105,50 @@ const Index = () => {
       </div>
 
       <div className="relative z-10">
-        <nav className="floating-nav">
-          <div className="px-4 sm:px-6 lg:px-8 py-4">
+        <nav className="floating-nav hidden md:block fixed top-7 left-1/2 transform -translate-x-1/2 w-full max-w-8xl z-50 rounded-half glass-card backdrop-blur-xl">
+          <div className="px-4 sm:px-6 lg:px-8 py-2">
             <div className="flex justify-between items-center">
-              <h1 className="text-2xl font-caveat font-bold bg-gradient-to-r from-violet-300 to-purple-300 bg-clip-text text-transparent py-1 px-1">
+              <h1 className="text-2xl font-caveat font-bold text-primary py-1 px-1">
                 Afnan K Salal
               </h1>
-              <div className="hidden md:flex space-x-8">
-                <a href="#about" className="hover:text-violet-300 transition-colors py-2">About</a>
-                <a href="#skills" className="hover:text-violet-300 transition-colors py-2">Skills</a>
-                <a href="#projects" className="hover:text-violet-300 transition-colors py-2">Projects</a>
-                <a href="#contact" className="hover:text-violet-300 transition-colors py-2">Contact</a>
+              <div className="flex space-x-8">
+                <a href="#about" className="hover:text-primary transition-colors py-2">About</a>
+                <a href="#skills" className="hover:text-primary transition-colors py-2">Skills</a>
+                <a href="#projects" className="hover:text-primary transition-colors py-2">Projects</a>
+                <a href="#contact" className="hover:text-primary transition-colors py-2">Contact</a>
               </div>
             </div>
           </div>
         </nav>
 
-        {/* Reduced pt- for mobile to bring content higher */}
-        <section className="pt-24 md:pt-40 pb-12 md:pb-20 px-4 sm:px-6 lg:px-8">
+        <section className="pt-4 md:pt-40 pb-12 md:pb-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div className="animate-fade-in text-center lg:text-left">
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-dancing font-bold mb-8 bg-gradient-to-r from-violet-300 via-purple-300 to-pink-300 bg-clip-text text-transparent leading-tight py-2">
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-dancing font-bold mb-4 text-primary leading-tight py-2">
                   Hello, I'm Afnan
                 </h1>
-                <p className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed">
-                  A passionate <span className="text-violet-300 font-semibold">AI Engineer & Full Stack Developer</span> crafting intelligent digital experiences with cutting-edge technologies
+                <p className="text-xl md:text-2xl text-foreground mb-6 leading-relaxed">
+                  A passionate <span className="text-primary font-semibold">AI Engineer & Full Stack Developer</span> crafting intelligent digital experiences with cutting-edge technologies
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                  <Button asChild className="bg-gradient-to-r from-violet-700 to-purple-700 hover:from-violet-800 hover:to-purple-800 px-8 py-3 rounded-full text-lg">
+                  <Button asChild className="bg-card hover:bg-card/80 text-foreground px-8 py-3 rounded-full text-lg">
                     <a href="/afnan-resume.pdf" download="afnan_salal_resume.pdf">
                       <Download className="mr-2" size={20} />
                       Download CV
                     </a>
                   </Button>
                   <a href="#projects" >
-                  <Button variant="outline" className="border-violet-300 text-violet-300 hover:bg-violet-300 hover:text-black px-8 py-3 rounded-full text-lg">
+                  <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-background px-8 py-3 rounded-full text-lg">
                     View Projects
                   </Button>
                   </a>
                 </div>
               </div>
 
-              <div className="relative mt-16 lg:mt-0">
-                <div className="w-64 h-64 sm:w-80 sm:h-80 mx-auto rounded-full bg-gradient-to-br from-violet-600 to-purple-700 p-1">
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-900 to-black flex items-center justify-center overflow-hidden">
+              <div className="relative mt-8 lg:mt-0">
+                <div className="w-64 h-64 sm:w-80 sm:h-80 mx-auto rounded-full bg-gradient-to-br from-card to-background p-1">
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-background to-card flex items-center justify-center overflow-hidden">
                     <img
                       src="/afnan.png"
                       alt="Afnan K Salal's profile picture"
@@ -170,42 +169,42 @@ const Index = () => {
 
         <section id="about" className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-dancing font-bold text-center mb-12 md:mb-16 bg-gradient-to-r from-violet-300 to-purple-300 bg-clip-text text-transparent py-2">
+            <h2 className="text-4xl md:text-5xl font-dancing font-bold text-center mb-12 md:mb-16 text-primary py-2">
               About Me
             </h2>
 
             <div className="grid lg:grid-cols-3 gap-8">
               <Card className="bento-card lg:col-span-2">
-                <h3 className="text-2xl font-caveat font-semibold mb-4 text-violet-200 py-1">My Story</h3>
-                <p className="text-gray-200 leading-relaxed mb-4">
+                <h3 className="text-2xl font-caveat font-semibold mb-4 text-primary py-1">My Story</h3>
+                <p className="text-foreground leading-relaxed mb-4">
                   I'm a passionate AI Engineer and Full-Stack Developer with 6+ years of experience building intelligent applications
                   that solve real-world problems. I specialize in machine learning, deep learning, and creating scalable web applications.
                 </p>
-                <p className="text-gray-200 leading-relaxed">
+                <p className="text-foreground leading-relaxed">
                   My expertise spans from training neural networks and deploying ML models to building modern web applications
                   with Next.js, Django, Express, Flask, and more. I love exploring the intersection of AI and web development.
                 </p>
                 <div className="flex flex-wrap gap-2 mt-6">
-                  <Badge className="bg-violet-700/30 text-violet-200 border-violet-600/40">AI Specialist</Badge>
-                  <Badge className="bg-purple-700/30 text-purple-200 border-purple-600/40">Full Stack</Badge>
-                  <Badge className="bg-pink-700/30 text-pink-200 border-pink-600/40">ML Engineer</Badge>
+                  <Badge className="bg-card/50 text-primary border-primary/30">AI Specialist</Badge>
+                  <Badge className="bg-card/50 text-primary border-primary/30">Full Stack</Badge>
+                  <Badge className="bg-card/50 text-primary border-primary/30">ML Engineer</Badge>
                 </div>
               </Card>
 
               <Card className="bento-card">
-                <h3 className="text-xl font-caveat font-semibold mb-4 text-violet-200 py-1">Quick Facts</h3>
+                <h3 className="text-xl font-caveat font-semibold mb-4 text-primary py-1">Quick Facts</h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <MapPin size={16} className="text-violet-300" />
-                    <span className="text-gray-200">Kerala, India</span>
+                    <MapPin size={16} className="text-primary" />
+                    <span className="text-foreground">Kerala, India</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Calendar size={16} className="text-violet-300" />
-                    <span className="text-gray-200">6+ Years Experience</span>
+                    <Calendar size={16} className="text-primary" />
+                    <span className="text-foreground">6+ Years Experience</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Award size={16} className="text-violet-300" />
-                    <span className="text-gray-200">20+ Projects Completed</span>
+                    <Award size={16} className="text-primary" />
+                    <span className="text-foreground">20+ Projects Completed</span>
                   </div>
                 </div>
               </Card>
@@ -215,18 +214,18 @@ const Index = () => {
 
         <section id="skills" className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-dancing font-bold text-center mb-12 md:mb-16 bg-gradient-to-r from-violet-300 to-purple-300 bg-clip-text text-transparent py-2">
+            <h2 className="text-4xl md:text-5xl font-dancing font-bold text-center mb-12 md:mb-16 text-primary py-2">
               Skills & Technologies
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {skills.map((skill, index) => (
-                <Card key={index} className="bento-card group hover:bg-gradient-to-br hover:from-violet-900/40 hover:to-purple-900/40">
+              {skills.map((skill: { color: string; iconKey: string; name: string }, index: number) => (
+                <Card key={index} className="bento-card group hover:bg-gradient-to-br hover:from-card/40 hover:to-background/40">
                   <div className="flex items-center gap-4">
                     <div className={`macos-icon bg-gradient-to-br ${skill.color} text-white group-hover:scale-110 transition-transform flex items-center justify-center`}>
                       <SkillIcon name={skill.iconKey} size={20} className="text-white" />
                     </div>
-                    <span className="font-medium text-gray-100 group-hover:text-white transition-colors">
+                    <span className="font-medium text-foreground group-hover:text-white transition-colors">
                       {skill.name}
                     </span>
                   </div>
@@ -237,26 +236,26 @@ const Index = () => {
             <div className="grid lg:grid-cols-3 gap-8 mt-8 md:mt-16">
               <Card className="bento-card">
                 <div className="flex items-center gap-3 mb-4">
-                  <Brain className="text-violet-300" size={24} />
-                  <h3 className="text-xl font-caveat font-semibold text-violet-200 py-1">AI & Machine Learning</h3>
+                  <Brain className="text-primary" size={24} />
+                  <h3 className="text-xl font-caveat font-semibold text-primary py-1">AI & Machine Learning</h3>
                 </div>
-                <p className="text-gray-200">Building intelligent systems with deep learning, NLP, and computer vision techniques.</p>
+                <p className="text-foreground">Building intelligent systems with deep learning, NLP, and computer vision techniques.</p>
               </Card>
 
               <Card className="bento-card">
                 <div className="flex items-center gap-3 mb-4">
-                  <Code className="text-purple-300" size={24} />
-                  <h3 className="text-xl font-caveat font-semibold text-purple-200 py-1">Full Stack Development</h3>
+                  <Code className="text-primary" size={24} />
+                  <h3 className="text-xl font-caveat font-semibold text-primary py-1">Full Stack Development</h3>
                 </div>
-                <p className="text-gray-200">Creating end-to-end applications with modern frameworks and scalable architectures.</p>
+                <p className="text-foreground">Creating end-to-end applications with modern frameworks and scalable architectures.</p>
               </Card>
 
               <Card className="bento-card">
                 <div className="flex items-center gap-3 mb-4">
-                  <Server className="text-pink-300" size={24} />
-                  <h3 className="text-xl font-caveat font-semibold text-pink-200 py-1">Cloud & DevOps</h3>
+                  <Server className="text-primary" size={24} />
+                  <h3 className="text-xl font-caveat font-semibold text-primary py-1">Cloud & DevOps</h3>
                 </div>
-                <p className="text-gray-200">Deploying and scaling applications using cloud services and containerization.</p>
+                <p className="text-foreground">Deploying and scaling applications using cloud services and containerization.</p>
               </Card>
             </div>
           </div>
@@ -264,39 +263,39 @@ const Index = () => {
 
         <section id="projects" className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-dancing font-bold text-center mb-12 md:mb-16 bg-gradient-to-r from-violet-300 to-purple-300 bg-clip-text text-transparent py-2">
+            <h2 className="text-4xl md:text-5xl font-dancing font-bold text-center mb-12 md:mb-16 text-primary py-2">
               Featured Projects
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8">
               {projects.map((project, index) => (
                 <Card key={index} className="bento-card group overflow-hidden">
-                  <div className="relative mb-4 overflow-hidden rounded-xl">
+                  <div className="relative mb-4">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                      className="w-full h-48 object-cover rounded-lg transition-transform duration-300"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                    <div className="absolute inset-0" />
                   </div>
 
-                  <h3 className="text-xl font-caveat font-semibold mb-2 text-violet-200 py-1">{project.title}</h3>
-                  <p className="text-gray-200 mb-4 leading-relaxed">{project.description}</p>
+                  <h3 className="text-xl font-caveat font-semibold mb-2 text-primary py-1">{project.title}</h3>
+                  <p className="text-foreground mb-4 leading-relaxed">{project.description}</p>
 
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech, techIndex) => (
-                      <Badge key={techIndex} className="bg-violet-700/30 text-violet-200 border-violet-600/40 text-xs">
+                      <Badge key={techIndex} className="bg-card/50 text-primary border-primary/30 text-xs">
                         {tech}
                       </Badge>
                     ))}
                   </div>
 
                   <div className="flex gap-3">
-                    <Button size="sm" className="bg-violet-700 hover:bg-violet-800">
+                    <Button size="sm" className="bg-card hover:bg-card/80 text-foreground">
                       <Github size={16} className="mr-2" />
                       Code
                     </Button>
-                    <Button size="sm" variant="outline" className="border-violet-300 text-violet-300 hover:bg-violet-300 hover:text-black">
+                    <Button size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-background">
                       <ExternalLink size={16} className="mr-2" />
                       Live Demo
                     </Button>
@@ -309,28 +308,28 @@ const Index = () => {
 
         <section id="contact" className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-dancing font-bold mb-8 bg-gradient-to-r from-violet-300 to-purple-300 bg-clip-text text-transparent py-2">
+            <h2 className="text-4xl md:text-5xl font-dancing font-bold mb-8 text-primary py-2">
               Let's Build Something Amazing Together
             </h2>
-            <p className="text-xl text-gray-200 mb-12 leading-relaxed">
+            <p className="text-foreground text-xl mb-12 leading-relaxed">
               I'm always interested in new opportunities and collaborations in AI and web development.
               Whether you have a project in mind or want to discuss the latest in technology, I'd love to connect!
             </p>
 
             <div className="flex justify-center gap-6 flex-wrap">
-              <Button asChild className="bg-gradient-to-r from-violet-700 to-purple-700 hover:from-violet-800 hover:to-purple-800 px-8 py-4 rounded-full text-lg">
+              <Button asChild className="bg-card hover:bg-card/80 text-foreground px-8 py-4 rounded-full text-lg">
                 <a href="https://github.com/afnanksalal" target="_blank" rel="noopener noreferrer">
                   <Github size={20} className="mr-2" />
                   GitHub
                 </a>
               </Button>
-              <Button asChild className="bg-gradient-to-r from-blue-700 to-cyan-700 hover:from-blue-800 hover:to-cyan-800 px-8 py-4 rounded-full text-lg">
+              <Button asChild className="bg-card hover:bg-card/80 text-foreground px-8 py-4 rounded-full text-lg">
                 <a href="https://www.linkedin.com/in/afnanksalal" target="_blank" rel="noopener noreferrer">
                   <Linkedin size={20} className="mr-2" />
                   LinkedIn
                 </a>
               </Button>
-              <Button asChild variant="outline" className="border-violet-300 text-violet-300 hover:bg-violet-300 hover:text-black px-8 py-4 rounded-full text-lg">
+              <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-background px-8 py-4 rounded-full text-lg">
                  <a href="https://twitter.com/afnanksalal" target="_blank" rel="noopener noreferrer">
                    <Twitter size={20} className="mr-2" />
                    X
@@ -340,12 +339,12 @@ const Index = () => {
           </div>
         </section>
 
-        <footer className="py-8 md:py-12 px-4 sm:px-6 lg:px-8 border-t border-violet-800/30">
+        <footer className="py-8 md:py-12 px-4 sm:px-6 lg:px-8 border-t border-primary/20">
           <div className="max-w-7xl mx-auto text-center">
-            <p className="text-gray-300 mb-4">
+            <p className="text-foreground mb-4">
               © 2025 Afnan K Salal
             </p>
-            <p className="text-sm text-gray-400">
+            <p className="text-gray-400 text-sm">
               "Building the future with AI and code"
             </p>
           </div>

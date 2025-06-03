@@ -1,48 +1,54 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 8 8% 2%;
-    --foreground: 280 5% 96%;
+    /* Define base colors based on the provided image */
+    --image-bg-color: 255 18% 20%;     /* #322c3a (Dark purple/grey from background) */
+    --image-yellow-color: 60 100% 93%; /* #ffffcc (Light yellow/cream from circle) */
+    --image-dark-accent: 267 23% 27%;  /* #4a3a5c (Darker purple accent, like the shirt) */
 
-    --card: 8 8% 3%;
-    --card-foreground: 280 5% 96%;
+    /* Map Tailwind/Shadcn variables to image colors */
+    --background: var(--image-bg-color);
+    --foreground: 0 0% 98%; /* Keep a bright foreground color */
 
-    --popover: 8 8% 3%;
-    --popover-foreground: 280 5% 96%;
+    --card: var(--image-dark-accent); /* Cards and background elements use the dark accent */
+    --card-foreground: 0 0% 98%;
 
-    --primary: 271 91% 65%;
-    --primary-foreground: 0 0% 98%;
+    --popover: var(--image-dark-accent);
+    --popover-foreground: 0 0% 98%;
 
-    --secondary: 271 15% 8%;
-    --secondary-foreground: 280 5% 96%;
+    --primary: var(--image-yellow-color); /* Yellow for primary highlights, buttons, headings */
+    --primary-foreground: 0 0% 8%;      /* Dark text on the yellow primary color */
 
-    --muted: 271 15% 8%;
-    --muted-foreground: 280 5% 65%;
+    --secondary: var(--image-dark-accent); /* Secondary elements use the dark accent */
+    --secondary-foreground: 0 0% 98%;
 
-    --accent: 271 15% 8%;
-    --accent-foreground: 280 5% 96%;
+    --muted: var(--image-dark-accent); /* Muted elements also use the dark accent */
+    --muted-foreground: 280 5% 65%; /* Keep greyish text for muted elements */
 
-    --destructive: 0 84.2% 60.2%;
+    --accent: var(--image-dark-accent); /* Accent elements use the dark accent */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%; /* Keep default red for destructive actions */
     --destructive-foreground: 210 40% 98%;
 
-    --border: 271 15% 8%;
-    --input: 271 15% 8%;
-    --ring: 271 91% 65%;
+    --border: var(--image-yellow-color); /* Use the yellow color for borders */
+    --input: var(--image-dark-accent);  /* Input fields can use the dark accent */
+    --ring: var(--image-yellow-color); /* Use the yellow color for focus rings */
 
     --radius: 0.75rem;
 
-    --sidebar-background: 8 8% 2%;
-    --sidebar-foreground: 280 5% 96%;
-    --sidebar-primary: 271 91% 65%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 271 15% 8%;
-    --sidebar-accent-foreground: 280 5% 96%;
-    --sidebar-border: 271 15% 8%;
-    --sidebar-ring: 271 91% 65%;
+    /* Sidebar variables - adapting them to the new color scheme */
+    --sidebar-background: var(--image-bg-color);
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: var(--image-yellow-color);
+    --sidebar-primary-foreground: 0 0% 8%;
+    --sidebar-accent: var(--image-dark-accent);
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: var(--image-yellow-color);
+    --sidebar-ring: var(--image-yellow-color);
   }
 }
 
@@ -53,7 +59,7 @@
 
   body {
     @apply bg-background text-foreground font-inter;
-    background: radial-gradient(ellipse at top left, #2d1b69 0%, #11082f 30%, #0a0512 70%, #130820 100%);
+    background-color: hsl(var(--background));
     min-height: 100vh;
     overflow-x: hidden;
   }
@@ -67,11 +73,12 @@
   }
 
   .bento-card {
-    @apply bg-gradient-to-br from-violet-950/40 to-purple-950/60 backdrop-blur-sm border border-violet-800/40 rounded-2xl p-6 transition-all duration-300 hover:scale-[1.02] hover:border-violet-700/60 hover:shadow-2xl hover:shadow-violet-500/30;
+    @apply bg-[hsl(var(--card))]/50 backdrop-blur-sm border border-[hsl(var(--border))]/20 rounded-2xl p-6 transition-all duration-300 hover:scale-[1.02] hover:border-[hsl(var(--border))]/40 hover:shadow-2xl hover:shadow-[hsl(var(--border))]/10;
   }
 
   .glass-card {
-    @apply bg-black/30 backdrop-blur-md border border-violet-800/30 rounded-2xl;
+    /* Use the primary color for the glass border */
+     @apply bg-[hsl(var(--background))]/60 backdrop-blur-md border border-[hsl(var(--primary))]/30 rounded-2xl;
   }
 
   .macos-icon {
@@ -79,15 +86,15 @@
   }
 
   .floating-icon {
-    @apply absolute w-16 h-16 bg-gradient-to-br rounded-2xl flex items-center justify-center animate-float shadow-2xl;
+    @apply absolute w-16 h-16 rounded-2xl flex items-center justify-center animate-float shadow-2xl;
   }
 
   .floating-nav {
-    @apply fixed top-4 left-4 right-4 z-50 glass-card border border-violet-800/30 backdrop-blur-xl rounded-2xl mx-auto max-w-7xl;
+    @apply fixed top-4 left-4 right-4 z-50 glass-card backdrop-blur-xl rounded-2xl mx-auto max-w-7xl;
   }
 }
 
-/* Enhanced animations */
+/* Enhanced animations - Keep as is */
 @keyframes float {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
@@ -148,20 +155,20 @@
   animation: glow-pulse 3s ease-in-out infinite;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar using the yellow color */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(139, 92, 246, 0.1);
+  background: hsla(var(--primary), 0.1); /* Yellow with opacity */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(139, 92, 246, 0.5);
+  background: hsla(var(--primary), 0.5); /* Yellow with opacity */
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 92, 246, 0.7);
+  background: hsla(var(--primary), 0.7); /* Yellow with opacity */
 }
