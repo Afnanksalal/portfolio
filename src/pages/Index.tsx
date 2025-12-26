@@ -89,6 +89,7 @@ const Index = () => {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [showAllExperiences, setShowAllExperiences] = useState(false);
 
   const navItems = ["about", "skills", "work", "contact"];
 
@@ -130,39 +131,67 @@ const Index = () => {
   }, [mobileMenuOpen]);
 
   const skills = [
-    { category: "Languages", items: ["Python", "TypeScript", "JavaScript", "Go", "Rust", "SQL"] },
-    { category: "AI/ML", items: ["PyTorch", "TensorFlow", "LangChain", "OpenAI", "Hugging Face", "RAG"] },
-    { category: "Frontend", items: ["React", "Next.js", "Tailwind", "Framer Motion", "Three.js"] },
-    { category: "Backend", items: ["Django", "FastAPI", "Node.js", "GraphQL", "PostgreSQL", "Redis"] },
-    { category: "Cloud", items: ["AWS", "GCP", "Docker", "Kubernetes", "Terraform", "Vercel"] },
-    { category: "Tools", items: ["Git", "Linux", "Vim", "Figma", "Notion", "Cursor"] }
+    { category: "Languages", items: ["Python", "TypeScript", "JavaScript", "Go", "Rust", "C", "C++", "Java", "Bash", "SQL", "Lua"] },
+    { category: "AI & ML", items: ["PyTorch", "TensorFlow", "LangChain", "OpenAI", "Claude", "Hugging Face", "RAG", "ONNX", "MLflow", "Weights & Biases"] },
+    { category: "Hardware & Firmware", items: ["Embedded C", "RTOS", "ESP32", "STM32", "Arduino", "Raspberry Pi", "PCB Design", "Verilog", "VHDL", "FPGA"] },
+    { category: "Wearables & IoT", items: ["BLE", "LoRa", "Zigbee", "MQTT", "Sensors", "Edge ML", "Low Power", "OTA Updates", "Thread", "Matter"] },
+    { category: "Cloud & DevOps", items: ["AWS", "GCP", "Azure", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "Kafka", "Redis", "Nginx"] },
+    { category: "Data & Databases", items: ["PostgreSQL", "MongoDB", "Supabase", "Firebase", "Prisma", "Drizzle", "ClickHouse", "TimescaleDB", "Neo4j", "Pinecone"] },
+    { category: "Frontend", items: ["React", "Next.js", "Vue", "Svelte", "Tailwind", "Framer Motion", "Three.js", "WebGL", "Electron", "React Native"] },
+    { category: "Backend", items: ["Node.js", "FastAPI", "Django", "NestJS", "Express", "GraphQL", "tRPC", "gRPC", "WebSockets", "REST"] },
+    { category: "Design & CAD", items: ["Figma", "Blender", "Fusion 360", "KiCad", "MATLAB", "Simulink", "SolidWorks", "Adobe XD", "Photoshop", "Illustrator"] },
+    { category: "Dev Tools", items: ["Git", "Linux", "Vim", "VS Code", "Cursor", "Notion", "Jira", "Postman", "Insomnia", "Wireshark"] }
   ];
 
   const projects = [
     {
-      title: "TextWave",
-      tagline: "AI Text-to-Speech",
-      description: "Multilingual speech synthesis with studio-grade quality. Controllable tone, cadence, and SSML presets for creators.",
-      image: "https://raw.githubusercontent.com/Afnanksalal/TextWave/refs/heads/main/textwave.png",
-      tech: ["Django", "Flask", "TTS", "NLP"],
-      link: "https://github.com/Afnanksalal/TextWave",
+      title: "Acadly",
+      tagline: "Campus Marketplace & Collaboration",
+      description: "Transform your campus experience—where students connect, trade, learn, and grow together. Building the future of academic collaboration.",
+      tech: ["Next.js", "PostgreSQL", "Redis", "Supabase", "Vercel"],
+      link: "https://github.com/Afnanksalal/Acadly",
+      live: "https://acadlyy.vercel.app",
       gradient: "from-violet-500/15 via-purple-500/10 to-fuchsia-500/15"
     },
     {
-      title: "Malayalee.ai",
-      tagline: "AI Malayalam Companion",
-      description: "Voice-first cultural AI—translates, tutors, and converses with authentic regional flair and context awareness.",
-      image: "https://raw.githubusercontent.com/Afnanksalal/Malayalee.ai/main/malayalee-ai.png",
-      tech: ["Python", "GenAI", "Gemini", "Speech"],
-      link: "https://github.com/Afnanksalal/Malayalee.ai",
+      title: "Co-op",
+      tagline: "Multi-Agent LLM Council",
+      description: "Expert guidance across legal, finance, investor relations, and competitive analysis. Powered by multi-model LLM Council with mandatory cross-critique.",
+      tech: ["Python", "FastAPI", "LangChain", "NestJS", "Supabase"],
+      link: "https://github.com/Afnanksalal/co-op",
+      live: "https://co-op-dev.vercel.app",
       gradient: "from-purple-500/15 via-indigo-500/10 to-violet-500/15"
+    },
+    {
+      title: "TenderTalks",
+      tagline: "Podcast Streaming Platform",
+      description: "Modern podcast streaming with subscription management, merchandise store, and comprehensive admin dashboard.",
+      tech: ["React", "TypeScript", "PostgreSQL", "Neon", "Supabase"],
+      link: "https://github.com/Afnanksalal/tendertalks",
+      live: "https://tendertalks.live",
+      gradient: "from-fuchsia-500/15 via-violet-500/10 to-purple-500/15"
+    },
+    {
+      title: "Frag",
+      tagline: "Systems & Robotics Language",
+      description: "Experimental, compiler-based programming language written in Rust. Designed as a modern systems + robotics language.",
+      tech: ["Rust", "Compiler", "Verilog", "Hardware", "Robotics"],
+      link: "https://github.com/Afnanksalal/frag",
+      gradient: "from-indigo-500/15 via-purple-500/10 to-violet-500/15"
     }
   ];
 
   const experiences = [
-    { role: "AI Engineer", company: "Building Products", period: "2023 — Now", desc: "Shipping AI features. LLM evals, guardrails, low-latency inference." },
-    { role: "Full-Stack Developer", company: "SaaS Platform", period: "2020 — 2023", desc: "Multi-tenant apps with Next.js, Django, real-time systems." },
-    { role: "ML Engineer", company: "Data Analytics", period: "2018 — 2020", desc: "Feature stores, model deployment, MLOps pipelines." }
+    { role: "Chief Technology Officer", company: "Nyvra", period: "2025 — Now", desc: "Hardware, firmware, AI/ML, data platform, wearable & cloud architecture." },
+    { role: "Technical Consultant", company: "Inker Robotics", period: "Oct 2025 — Now", desc: "Robotics systems, embedded firmware, and hardware-software integration." },
+    { role: "Founder", company: "pls intern me", period: "Jul 2025 — Now", desc: "Building tools to help students find internships and opportunities." },
+    { role: "Chief Executive Officer", company: "Kaizen Solutions", period: "Jan 2025 — Now", desc: "AI-powered SaaS products. Technical strategy and product development." },
+    { role: "Chief Technology Officer", company: "Avolta Technologies", period: "Jan 2025 — Now", desc: "Full-stack development, AI integration, and cloud infrastructure." },
+    { role: "IEDC NEST Team", company: "IEDC Kerala", period: "Oct 2024 — Now", desc: "Innovation and entrepreneurship development initiatives." },
+    { role: "Internship Trainee", company: "Purpose Technology LLP", period: "Mar 2024 — Apr 2024", desc: "On-site internship focused on practical development skills." },
+    { role: "Developer", company: "Assistify Labs", period: "Feb 2024 — Now", desc: "Full-time development work on AI-powered products." },
+    { role: "IEDC Member", company: "IEDC Kerala", period: "Jul 2022 — Now", desc: "Active member contributing to innovation ecosystem." },
+    { role: "Management Staff", company: "FalixNodes", period: "Aug 2019 — Jul 2021", desc: "Part-time management role for hosting platform based in London." }
   ];
 
   return (
@@ -187,14 +216,8 @@ const Index = () => {
         {/* ═══════════════════════════════════════════════════════════════ */}
         <header className="fixed top-0 left-0 right-0 z-40 backdrop-blur-2xl bg-[#0d0a14]/70 border-b border-violet-900/30">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
-            <a href="#" className="group flex items-center gap-2 sm:gap-3" data-hover>
-              <div className="relative h-8 w-8 sm:h-10 sm:w-10 overflow-hidden rounded-full ring-2 ring-violet-500/50 ring-offset-2 ring-offset-[#0d0a14] transition-all group-hover:ring-violet-400">
-                <img src="/afnan.png" alt="Afnan" className="h-full w-full object-cover" />
-              </div>
-              <div className="hidden sm:block">
-                <p className="text-sm font-medium">Afnan K Salal</p>
-                <p className="text-xs font-mono text-stone-500">AI Engineer</p>
-              </div>
+            <a href="#" className="group flex items-center gap-2" data-hover>
+              <p className="text-sm font-medium">Afnan K Salal</p>
             </a>
 
             {/* Desktop nav */}
@@ -218,12 +241,7 @@ const Index = () => {
             </nav>
 
             <div className="flex items-center gap-2 sm:gap-3">
-              <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex text-stone-400 hover:text-stone-100 hover:bg-violet-900/30" data-hover>
-                <a href="https://github.com/afnanksalal" target="_blank" rel="noreferrer" aria-label="GitHub">
-                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.42-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
-                </a>
-              </Button>
-              <Button asChild size="sm" className="bg-violet-600 text-white hover:bg-violet-500 font-medium text-xs sm:text-sm" data-hover>
+              <Button asChild size="sm" className="hidden sm:inline-flex bg-violet-600 text-white hover:bg-violet-500 font-medium text-xs sm:text-sm" data-hover>
                 <a href="/afnan-resume.pdf" download>Resume</a>
               </Button>
 
@@ -268,16 +286,10 @@ const Index = () => {
                     {item}
                   </motion.a>
                 ))}
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.4 } }} className="flex gap-4 mt-8">
-                  <a href="https://github.com/afnanksalal" target="_blank" rel="noreferrer" className="p-3 rounded-full bg-violet-950/50 text-stone-300">
-                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.42-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
-                  </a>
-                  <a href="https://linkedin.com/in/afnanksalal" target="_blank" rel="noreferrer" className="p-3 rounded-full bg-violet-950/50 text-stone-300">
-                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                  </a>
-                  <a href="https://twitter.com/afnanksalal" target="_blank" rel="noreferrer" className="p-3 rounded-full bg-violet-950/50 text-stone-300">
-                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                  </a>
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.4 } }} className="mt-8">
+                  <Button asChild size="lg" className="bg-violet-600 text-white hover:bg-violet-500 font-medium px-8" data-hover>
+                    <a href="/afnan-resume.pdf" download onClick={() => setMobileMenuOpen(false)}>Resume</a>
+                  </Button>
                 </motion.div>
               </motion.nav>
             </motion.div>
@@ -287,7 +299,7 @@ const Index = () => {
         {/* ═══════════════════════════════════════════════════════════════ */}
         {/* HERO */}
         {/* ═══════════════════════════════════════════════════════════════ */}
-        <section className="relative min-h-screen flex items-center overflow-hidden px-4 sm:px-6 pt-24 pb-20 sm:pt-32 sm:pb-32">
+        <section className="relative min-h-screen flex items-center overflow-hidden px-4 sm:px-6 pt-28 pb-24 sm:pt-32 sm:pb-32">
           {/* Ambient blurs */}
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute top-1/4 -left-1/4 h-[300px] sm:h-[500px] w-[300px] sm:w-[500px] rounded-full bg-violet-600/10 blur-[80px] sm:blur-[120px]" />
@@ -295,22 +307,9 @@ const Index = () => {
           </div>
 
           <div className="relative z-10 mx-auto w-full max-w-7xl">
-            <div className="grid gap-10 lg:gap-16 lg:grid-cols-[1.3fr_0.7fr] items-center">
+            <div className="grid gap-32 lg:gap-16 lg:grid-cols-[1.3fr_0.7fr] items-center">
               {/* Left content */}
               <div className="space-y-6 sm:space-y-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  className="inline-flex items-center gap-2 rounded-full border border-violet-700/40 bg-violet-950/30 px-3 sm:px-4 py-1.5 text-xs sm:text-sm text-stone-400 backdrop-blur-sm"
-                >
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-                  </span>
-                  <span className="font-mono">Available for work</span>
-                </motion.div>
-
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.15] tracking-tight">
                   <RevealText className="block text-stone-100 pb-1">Hey, I'm Afnan.</RevealText>
                   <motion.span 
@@ -320,9 +319,8 @@ const Index = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    I build AI products
+                    I build things that work.
                   </motion.span>
-                  <RevealText delay={0.6} className="block text-stone-100 mt-1 pb-1">that actually work.</RevealText>
                 </h1>
 
                 <motion.p
@@ -331,7 +329,7 @@ const Index = () => {
                   transition={{ delay: 0.5 }}
                   className="max-w-xl text-base sm:text-lg leading-relaxed text-stone-400 font-mono"
                 >
-                  Full-stack engineer obsessed with craft. 6+ years shipping production AI systems, real-time apps, and interfaces that feel like magic.
+                  Building at the intersection of Hardware, Firmware, AI/ML, Data Platforms, Wearables & Cloud Architecture.
                 </motion.p>
 
                 <motion.div
@@ -360,14 +358,27 @@ const Index = () => {
                 >
                   {[
                     { value: "6+", label: "Years Experience" },
-                    { value: "20+", label: "Projects Shipped" },
-                    { value: "30+", label: "AI Models Deployed" }
+                    { value: "10+", label: "SaaS Products" },
+                    { value: "5+", label: "Custom Models" }
                   ].map(stat => (
                     <div key={stat.label} className="text-center sm:text-left">
                       <p className="text-3xl sm:text-4xl font-bold text-stone-100">{stat.value}</p>
                       <p className="text-xs sm:text-sm font-mono text-stone-400 mt-1">{stat.label}</p>
                     </div>
                   ))}
+                </motion.div>
+
+                {/* Scroll indicator - mobile only, before photo */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.2 }}
+                  className="flex justify-center lg:hidden"
+                >
+                  <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="flex flex-col items-center gap-2 text-stone-500">
+                    <span className="text-xs font-mono uppercase tracking-widest">Scroll</span>
+                    <ArrowDown weight="bold" className="h-5 w-5" />
+                  </motion.div>
                 </motion.div>
               </div>
 
@@ -385,12 +396,12 @@ const Index = () => {
               </motion.div>
             </div>
 
-            {/* Scroll indicator - positioned below the content */}
+            {/* Scroll indicator - desktop only, below content */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2 }}
-              className="flex justify-center mt-12 sm:mt-16 lg:mt-20"
+              className="hidden lg:flex justify-center mt-12 sm:mt-16 lg:mt-20"
             >
               <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="flex flex-col items-center gap-2 text-stone-500">
                 <span className="text-xs font-mono uppercase tracking-widest">Scroll</span>
@@ -412,10 +423,10 @@ const Index = () => {
 
               <FadeUp delay={0.2} className="space-y-6 text-base sm:text-lg text-stone-400 leading-relaxed">
                 <p className="font-mono">
-                  6 years deep into AI and full-stack. I've shipped ML pipelines, built platforms, and created products used by real humans.
+                  6 years building across the full stack—from silicon to cloud. Hardware, firmware, AI/ML, data platforms, wearables, and scalable infrastructure.
                 </p>
                 <p className="font-mono">
-                  What drives me? That moment when complexity becomes invisible. When an app just <span className="text-stone-200">works</span>.
+                  What drives me? That moment when hardware meets software perfectly. When the whole system just <span className="text-stone-200">works</span>.
                 </p>
 
                 <div className="grid grid-cols-2 gap-3 pt-6">
@@ -440,8 +451,8 @@ const Index = () => {
                 <p className="text-xs sm:text-sm font-mono uppercase tracking-[0.25em] text-violet-400 mb-8">{`// Experience`}</p>
               </FadeUp>
               <div className="space-y-4 sm:space-y-6">
-                {experiences.map((exp, i) => (
-                  <FadeUp key={exp.role} delay={i * 0.1}>
+                {(showAllExperiences ? experiences : experiences.slice(0, 3)).map((exp, i) => (
+                  <FadeUp key={`exp-${i}`} delay={i * 0.1}>
                     <div className="group relative rounded-xl sm:rounded-2xl border border-violet-800/30 bg-violet-950/20 p-4 sm:p-6 hover:bg-violet-950/40 transition-colors">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 mb-2">
                         <div>
@@ -455,6 +466,23 @@ const Index = () => {
                   </FadeUp>
                 ))}
               </div>
+              {experiences.length > 3 && (
+                <FadeUp delay={0.3}>
+                  <button
+                    onClick={() => setShowAllExperiences(!showAllExperiences)}
+                    className="mt-6 w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-violet-700/50 bg-violet-950/30 text-stone-300 hover:bg-violet-950/50 hover:text-stone-100 hover:border-violet-600/50 transition-colors font-mono text-sm"
+                    data-hover
+                  >
+                    {showAllExperiences ? "Show less" : `Show all ${experiences.length} experiences`}
+                    <motion.span
+                      animate={{ rotate: showAllExperiences ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ArrowDown weight="bold" className="h-4 w-4" />
+                    </motion.span>
+                  </button>
+                </FadeUp>
+              )}
             </div>
           </div>
         </section>
@@ -466,9 +494,9 @@ const Index = () => {
           <div className="mx-auto max-w-7xl">
             <SectionHeader label="Skills" title="My toolkit." />
 
-            <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
               {skills.map((group, i) => (
-                <FadeUp key={group.category} delay={i * 0.08}>
+                <FadeUp key={group.category} delay={i * 0.08} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
                   <div className="rounded-xl sm:rounded-2xl border border-violet-800/30 bg-violet-950/20 p-4 sm:p-6 hover:bg-violet-950/40 transition-colors h-full">
                     <p className="text-xs font-mono uppercase tracking-wider text-violet-400 mb-4">{group.category}</p>
                     <div className="flex flex-wrap gap-2">
@@ -502,33 +530,39 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="space-y-6 sm:space-y-10">
+            <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
               {projects.map((project, idx) => (
                 <FadeUp key={project.title} delay={idx * 0.1}>
-                  <div className="group relative">
-                    <div className={cn("absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br opacity-0 transition-opacity duration-500 group-hover:opacity-100 blur-3xl", project.gradient)} />
-                    <div className="relative grid gap-6 sm:gap-8 rounded-2xl sm:rounded-3xl border border-violet-800/30 bg-violet-950/30 p-5 sm:p-8 backdrop-blur-sm lg:grid-cols-[1fr_1.2fr] items-center overflow-hidden">
-                      <div className="space-y-4 sm:space-y-6">
+                  <div className="group relative h-full">
+                    <div className={cn("absolute inset-0 rounded-2xl bg-gradient-to-br opacity-0 transition-opacity duration-500 group-hover:opacity-100 blur-3xl", project.gradient)} />
+                    <div className="relative h-full flex flex-col rounded-2xl border border-violet-800/30 bg-violet-950/30 p-5 sm:p-6 backdrop-blur-sm">
+                      <div className="flex-1 space-y-4">
                         <div>
-                          <p className="text-xs sm:text-sm font-mono text-violet-400 mb-1">{project.tagline}</p>
-                          <h3 className="text-2xl sm:text-3xl font-semibold text-stone-100 group-hover:text-white transition-colors">{project.title}</h3>
+                          <p className="text-xs font-mono text-violet-400 mb-1">{project.tagline}</p>
+                          <h3 className="text-xl sm:text-2xl font-semibold text-stone-100 group-hover:text-white transition-colors">{project.title}</h3>
                         </div>
-                        <p className="text-sm sm:text-base font-mono text-stone-400 leading-relaxed">{project.description}</p>
+                        <p className="text-sm font-mono text-stone-400 leading-relaxed">{project.description}</p>
                         <div className="flex flex-wrap gap-2">
                           {project.tech.map(t => (
-                            <span key={t} className="rounded-full border border-violet-700/40 bg-violet-900/30 px-2.5 sm:px-3 py-1 text-xs font-mono text-stone-400">{t}</span>
+                            <span key={t} className="rounded-full border border-violet-700/40 bg-violet-900/30 px-2.5 py-1 text-xs font-mono text-stone-400">{t}</span>
                           ))}
                         </div>
+                      </div>
+                      <div className="flex gap-3 mt-6">
                         <Button asChild size="sm" className="bg-violet-600 text-white hover:bg-violet-500" data-hover>
                           <a href={project.link} target="_blank" rel="noreferrer">
-                            View project
-                            <ArrowUpRight weight="bold" className="ml-2 h-4 w-4" />
+                            GitHub
+                            <ArrowUpRight weight="bold" className="ml-1.5 h-3.5 w-3.5" />
                           </a>
                         </Button>
-                      </div>
-
-                      <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-violet-800/20 order-first lg:order-last">
-                        <ParallaxImg src={project.image} alt={project.title} className="aspect-video" />
+                        {project.live && (
+                          <Button asChild size="sm" variant="outline" className="border-violet-600/50 text-stone-200 hover:bg-violet-600 hover:text-white hover:border-violet-600" data-hover>
+                            <a href={project.live} target="_blank" rel="noreferrer">
+                              Live Demo
+                              <ArrowUpRight weight="bold" className="ml-1.5 h-3.5 w-3.5" />
+                            </a>
+                          </Button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -607,24 +641,8 @@ const Index = () => {
         {/* FOOTER */}
         {/* ═══════════════════════════════════════════════════════════════ */}
         <footer className="border-t border-violet-900/30 py-6 sm:py-8 px-4 sm:px-6">
-          <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="h-8 w-8 overflow-hidden rounded-full">
-                <img src="/afnan.png" alt="Afnan" className="h-full w-full object-cover" />
-              </div>
-              <span className="text-xs sm:text-sm font-mono text-stone-500">© 2025 Afnan K Salal</span>
-            </div>
-            <div className="flex items-center gap-4">
-              {[
-                { href: "https://github.com/afnanksalal", icon: <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.42-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg> },
-                { href: "https://linkedin.com/in/afnanksalal", icon: <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> },
-                { href: "https://twitter.com/afnanksalal", icon: <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> }
-              ].map(link => (
-                <a key={link.href} href={link.href} target="_blank" rel="noreferrer" className="text-stone-500 hover:text-violet-400 transition-colors" data-hover>
-                  {link.icon}
-                </a>
-              ))}
-            </div>
+          <div className="mx-auto max-w-7xl flex items-center justify-center">
+            <span className="text-xs sm:text-sm font-mono text-stone-500">© 2025 Afnan K Salal</span>
           </div>
         </footer>
       </div>
