@@ -83,6 +83,9 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
+				'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+				'mono': ['JetBrains Mono', 'Fira Code', 'Menlo', 'monospace'],
+				'display': ['Space Grotesk', 'Inter', 'sans-serif'],
 				'dancing': ['Dancing Script', 'cursive'],
 				'caveat': ['Caveat', 'cursive'],
 				'inter': ['Inter', 'sans-serif'],

@@ -1,54 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Define base colors based on the provided image */
-    --image-bg-color: 255 18% 20%;     /* #322c3a (Dark purple/grey from background) */
-    --image-yellow-color: 60 100% 93%; /* #ffffcc (Light yellow/cream from circle) */
-    --image-dark-accent: 267 23% 27%;  /* #4a3a5c (Darker purple accent, like the shirt) */
+    --background: 260 20% 6%;
+    --foreground: 45 30% 96%;
 
-    /* Map Tailwind/Shadcn variables to image colors */
-    --background: var(--image-bg-color);
-    --foreground: 0 0% 98%; /* Keep a bright foreground color */
+    --card: 260 18% 8%;
+    --card-foreground: 45 30% 96%;
 
-    --card: var(--image-dark-accent); /* Cards and background elements use the dark accent */
-    --card-foreground: 0 0% 98%;
+    --popover: 260 18% 8%;
+    --popover-foreground: 45 30% 96%;
 
-    --popover: var(--image-dark-accent);
-    --popover-foreground: 0 0% 98%;
+    --primary: 270 60% 65%;
+    --primary-foreground: 260 20% 6%;
 
-    --primary: var(--image-yellow-color); /* Yellow for primary highlights, buttons, headings */
-    --primary-foreground: 0 0% 8%;      /* Dark text on the yellow primary color */
+    --secondary: 260 15% 14%;
+    --secondary-foreground: 45 30% 96%;
 
-    --secondary: var(--image-dark-accent); /* Secondary elements use the dark accent */
-    --secondary-foreground: 0 0% 98%;
+    --muted: 260 15% 14%;
+    --muted-foreground: 260 10% 55%;
 
-    --muted: var(--image-dark-accent); /* Muted elements also use the dark accent */
-    --muted-foreground: 280 5% 65%; /* Keep greyish text for muted elements */
+    --accent: 45 80% 75%;
+    --accent-foreground: 260 20% 6%;
 
-    --accent: var(--image-dark-accent); /* Accent elements use the dark accent */
-    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 45 30% 96%;
 
-    --destructive: 0 84.2% 60.2%; /* Keep default red for destructive actions */
-    --destructive-foreground: 210 40% 98%;
-
-    --border: var(--image-yellow-color); /* Use the yellow color for borders */
-    --input: var(--image-dark-accent);  /* Input fields can use the dark accent */
-    --ring: var(--image-yellow-color); /* Use the yellow color for focus rings */
+    --border: 260 15% 18%;
+    --input: 260 15% 18%;
+    --ring: 270 60% 65%;
 
     --radius: 0.75rem;
 
-    /* Sidebar variables - adapting them to the new color scheme */
-    --sidebar-background: var(--image-bg-color);
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: var(--image-yellow-color);
-    --sidebar-primary-foreground: 0 0% 8%;
-    --sidebar-accent: var(--image-dark-accent);
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: var(--image-yellow-color);
-    --sidebar-ring: var(--image-yellow-color);
+    --sidebar-background: 260 20% 6%;
+    --sidebar-foreground: 45 30% 96%;
+    --sidebar-primary: 270 60% 65%;
+    --sidebar-primary-foreground: 260 20% 6%;
+    --sidebar-accent: 45 80% 75%;
+    --sidebar-accent-foreground: 260 20% 6%;
+    --sidebar-border: 260 15% 18%;
+    --sidebar-ring: 270 60% 65%;
   }
 }
 
@@ -57,118 +54,49 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground font-inter;
-    background-color: hsl(var(--background));
+    @apply antialiased;
+    background: #0d0a14;
+    color: #f5f0e8;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
   }
 
-  /* Fix font rendering and clipping issues */
-  .font-dancing,
-  .font-caveat {
-    line-height: 1.3;
-    padding-top: 0.1em;
-    padding-bottom: 0.1em;
+  /* Restore normal cursor with pointer on interactive elements */
+  a, button, [data-hover] {
+    cursor: pointer;
   }
 
-  .bento-card {
-    @apply bg-[hsl(var(--card))]/50 backdrop-blur-sm border border-[hsl(var(--border))]/20 rounded-2xl p-6 transition-all duration-300 hover:scale-[1.02] hover:border-[hsl(var(--border))]/40 hover:shadow-2xl hover:shadow-[hsl(var(--border))]/10;
-  }
-
-  .glass-card {
-    /* Use the primary color for the glass border */
-     @apply bg-[hsl(var(--background))]/60 backdrop-blur-md border border-[hsl(var(--primary))]/30 rounded-2xl;
-  }
-
-  .macos-icon {
-    @apply w-12 h-12 rounded-xl flex items-center justify-center text-2xl transition-all duration-300 hover:scale-110 hover:rotate-3 shadow-lg;
-  }
-
-  .floating-icon {
-    @apply absolute w-16 h-16 rounded-2xl flex items-center justify-center animate-float shadow-2xl;
-  }
-
-  .floating-nav {
-    @apply fixed top-4 left-4 right-4 z-50 glass-card backdrop-blur-xl rounded-2xl mx-auto max-w-7xl;
+  ::selection {
+    background: rgba(167, 139, 250, 0.3);
+    color: #f5f0e8;
   }
 }
 
-/* Enhanced animations - Keep as is */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  33% {
-    transform: translateY(-15px) rotate(1deg);
-  }
-  66% {
-    transform: translateY(-5px) rotate(-1deg);
-  }
+/* Hide scrollbar completely */
+::-webkit-scrollbar { display: none; }
+html { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Grid background effect - violet tint */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(139, 92, 246, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center center;
 }
 
-@keyframes float-delayed {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  33% {
-    transform: translateY(-10px) rotate(-1deg);
-  }
-  66% {
-    transform: translateY(-20px) rotate(1deg);
-  }
-}
-
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(0.5deg);
-  }
-}
-
-@keyframes glow-pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.7;
-    transform: scale(1.05);
-  }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-float-delayed {
-  animation: float-delayed 8s ease-in-out infinite;
-}
-
-.animate-float-slow {
-  animation: float-slow 10s ease-in-out infinite;
-}
-
-.animate-glow-pulse {
-  animation: glow-pulse 3s ease-in-out infinite;
-}
-
-/* Custom scrollbar using the yellow color */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: hsla(var(--primary), 0.1); /* Yellow with opacity */
-}
-
-::-webkit-scrollbar-thumb {
-  background: hsla(var(--primary), 0.5); /* Yellow with opacity */
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsla(var(--primary), 0.7); /* Yellow with opacity */
+/* Gradient text clipping fix */
+.gradient-text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding-bottom: 0.15em;
+  margin-bottom: -0.15em;
+  display: inline-block;
 }
