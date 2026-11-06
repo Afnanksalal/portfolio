@@ -17,3 +17,5 @@ The bloom button works with touch and keyboard and exposes its state with `aria-
 Paper `#d2d1c0`, ink `#373344`, plum `#66536e`, muted text `#625d65`, rules `#b8b6a8`, light paper `#e5e3d6`. Lora for headings, DM Sans for reading, Kalam for short notes; system fallbacks remain available. Lyra’s drawing is the defining visual. Keep text restrained and avoid resume, hiring, skill-cloud, stock photo, and dashboard treatments.
 
 The homepage is for visitors to get to know Afnan, browse a few projects, or say hello. Keep these links straightforward on small screens and maintain visible keyboard focus. Project descriptions come from the previous portfolio; the introduction is editable personal copy.
+
+The welcome screen uses Lyra's original signed flower drawing in full (contain, never cropped). It waits for the three art assets with a 1.6-second minimum and a 5-second maximum, then fades out over 450ms. Reduced motion skips the fade. Underlying content is inert and scrolling locked only while the screen is visible.

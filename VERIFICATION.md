@@ -7,3 +7,5 @@
 - Browser checks: canvas gains alpha under the cursor, clears after the 2.2-second trail lifetime, keyboard Enter toggles bloom and `aria-pressed`, reduced motion suppresses cursor animation, and phone layout has no horizontal overflow. Project anchor navigation works.
 - Color-toggle screenshots supplied separately. Artwork files are original attachments, not generated replacements.
 - Existing project and social destinations were retained; external destinations were not exhaustively audited.
+
+Loading-screen update: production build, TypeScript, and changed-file lint pass. Edge verified desktop and mobile loader visibility, dismissal, restored interaction/scroll, and reduced-motion dismissal. Loading screenshots were inspected.
