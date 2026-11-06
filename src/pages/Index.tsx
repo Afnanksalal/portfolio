@@ -197,18 +197,6 @@ export default function Index() {
             <a className="email-link" href="mailto:afnanksalal@gmail.com">
               afnanksalal@gmail.com
             </a>
-            <p className="postcard-credit handwritten">
-              another little garden by{" "}
-              <a
-                className="artist-link"
-                href="https://lyradossier.vercel.app/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Lyra
-              </a>{" "}
-              ♡
-            </p>
           </div>
         </div>
         <div className="footer-bottom">
