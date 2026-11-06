@@ -106,12 +106,23 @@ h3 {
   display: flex;
   flex-direction: column;
 }
+.garden::after {
+  content: "";
+  position: absolute;
+  inset: 0.75%;
+  border: 1px solid #605039;
+  pointer-events: none;
+  z-index: 3;
+}
 .flower-art {
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
+  /* The original sheet border is cropped by cover on wide screens.
+     Hide its fragments and draw one complete frame above both art layers. */
+  clip-path: inset(1.1%);
 }
 .flower-art img,
 .flower-art canvas {
