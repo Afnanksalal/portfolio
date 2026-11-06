@@ -4,7 +4,7 @@ My personal website: things I’m building, a little about me, and a garden of l
 
 **[Visit the site](https://portfolio.afnan.codes)** · **[Meet the artist](https://portfolio.afnan.codes/art)**
 
-![Lilies drawn by Lyra](public/art/lyra-postcard.png)
+![Afnan K Salal, handwritten by Lyra and framed with her lilies](public/art/lyra-welcome.png)
 
 ## The site
 
