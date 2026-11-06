@@ -132,7 +132,17 @@ export default function Index() {
           <p>
             I like working across the whole thing: the code, the circuit, and
             the way it feels to use. Lately that's meant AI, embedded systems,
-            and tools that help people connect.
+            and tools that help people connect. You can find more of what I’m
+            building on{" "}
+            <a
+              className="artist-link"
+              href="https://github.com/Afnanksalal"
+              target="_blank"
+              rel="noreferrer"
+            >
+              my GitHub
+            </a>
+            .
           </p>
         </aside>
       </section>
