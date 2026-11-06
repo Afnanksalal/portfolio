@@ -208,20 +208,6 @@ export default function Index() {
           </p>
           <div>
             <Link to="/art">lilies by Lyra ♡</Link>
-            <a
-              href="https://nevis.nekoweb.org/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Lyra’s life
-            </a>
-            <a
-              href="https://lyradossier.vercel.app/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Lyra’s portfolio
-            </a>
             <a href="https://github.com/Afnanksalal">GitHub</a>
             <a href="https://twitter.com/afnanksalal">Twitter</a>
             <a href="https://www.linkedin.com/in/afnanksalal/">LinkedIn</a>
