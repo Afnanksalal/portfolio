@@ -45,13 +45,11 @@ export default function Index() {
           <p className="handwritten greeting">oh, hey. you found me.</p>
           <h1>I'm Afnan.</h1>
           <p className="intro-copy">
-            I make things, follow my curiosity,
-            <br />
+            I make things, follow my curiosity, <br />
             and occasionally finish a side project.
           </p>
           <p className="intro-small">
-            Somewhere between software, hardware,
-            <br />
+            Somewhere between software, hardware, <br />
             and whatever caught my attention this week.
           </p>
           <a className="wander-link" href="#things">

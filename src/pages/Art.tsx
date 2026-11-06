@@ -32,14 +32,7 @@ export default function Art() {
             >
               <LyraFlower name={name} decorative={false} />
               <figcaption className="handwritten">
-                {
-                  [
-                    "a pencil lily",
-                    "a blue lily",
-                    "a violet lily",
-                    "a mint lily",
-                  ][i]
-                }
+                {["Morana", "Isolde", "Violet", "Inara"][i]}
               </figcaption>
             </motion.figure>
           ),

@@ -21,7 +21,9 @@ export default function FlowerGarden() {
       height = 0;
     const points: { x: number; y: number; time: number }[] = [];
     let pointer: { x: number; y: number } | null = null;
-    const mobile = window.matchMedia("(max-width: 700px)");
+    const mobile = window.matchMedia(
+      "(max-width: 700px), (max-width: 1100px) and (orientation: portrait)",
+    );
 
     // Recompose the four original flowers on phones, rather than enlarging
     // the landscape sheet until most of its artwork is outside the viewport.
@@ -30,12 +32,21 @@ export default function FlowerGarden() {
       source: HTMLImageElement,
     ) => {
       if (mobile.matches) {
-        const size = width * 0.49;
+        const size = Math.min(width * 0.46, 230);
+        const edge = Math.max(12, width * 0.025);
         const flowers = [
-          { crop: [185, 30, 550, 430], x: 0, y: 112 },
-          { crop: [1140, 12, 520, 430], x: width - size, y: 118 },
-          { crop: [395, 560, 575, 510], x: 0, y: height - 240 },
-          { crop: [1265, 490, 520, 435], x: width - size, y: height - 225 },
+          { crop: [185, 30, 550, 430], x: edge, y: 112 },
+          { crop: [1140, 12, 520, 430], x: width - size - edge, y: 118 },
+          {
+            crop: [395, 560, 575, 510],
+            x: edge,
+            y: height - 125 - (size * 510) / 575,
+          },
+          {
+            crop: [1265, 490, 520, 435],
+            x: width - size - edge,
+            y: height - 125 - (size * 435) / 520,
+          },
         ];
         for (const {
           crop: [sx, sy, sw, sh],
