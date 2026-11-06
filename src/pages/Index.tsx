@@ -72,9 +72,6 @@ export default function Index() {
             ♡
           </p>
           <p className="hover-note">
-            <span className="pointer-hint">
-              hover over the lilies for a little color
-            </span>
             <span className="touch-hint">
               touch the lilies for a little color
             </span>
