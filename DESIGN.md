@@ -19,3 +19,5 @@ The welcome screen shows Lyra’s signed drawing, waits for the art assets (1.6 
 ## Content
 
 Featured repositories are Genmotion, Co-op, BreachScope, and Frag. Names and descriptions were checked against Afnan’s GitHub profile and current repository READMEs. Preserve the original contact destinations and visible credit to Lyra.
+
+Desktop hero height follows the actual viewport rather than a fixed minimum. Type, vertical spacing, and credit padding adapt to viewport height so the opening fits landscape laptop and 1080p screens with Lyra’s credit visible.

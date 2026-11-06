@@ -9,3 +9,4 @@
 - 320px, 390px, and 700px checks detect no horizontal overflow. Wheel scrolling works with scrollbars hidden. Navigation anchors and art-credit links work.
 - Original transparent art assets are preserved. Project descriptions and links checked against GitHub profile/repository content.
 - The glass SVG refraction path was tested in Edge. Safari/Firefox fallback was implemented but not visually tested here.
+- Desktop opening verified at 1920x1080, 1920x900, 1536x730, 1440x768, 1366x650, and 1024x600: hero fits one viewport, Lyra’s credit is visible, navbar and introduction do not overlap, and there is no horizontal overflow.
