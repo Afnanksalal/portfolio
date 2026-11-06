@@ -45,10 +45,6 @@ export default function Art() {
           ),
         )}
       </div>
-      <p className="handwritten art-thanks">
-        All lily drawings by Lyra. Thank you for making this place feel like me.
-        ♡
-      </p>
       <div className="artist-destinations">
         <a
           className="quiet-link"
