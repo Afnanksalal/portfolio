@@ -688,11 +688,29 @@ body::-webkit-scrollbar {
 }
 .footer-bottom > div {
   flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 700px;
+}
+.footer-bottom > p {
+  flex-shrink: 0;
+}
+.artist-link {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.artist-destinations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+  margin-top: 24px;
 }
 .skip-link {
   z-index: 60;
 }
 @media (max-width: 700px) {
+  .footer-bottom > div {
+    justify-content: flex-start;
+  }
   .project {
     grid-template-columns: 46px 1fr 20px;
     gap: 15px;

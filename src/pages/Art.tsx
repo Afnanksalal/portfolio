@@ -49,6 +49,24 @@ export default function Art() {
         All flower drawings by Lyra. Thank you for making this place feel like
         me. ♡
       </p>
+      <div className="artist-destinations">
+        <a
+          className="quiet-link"
+          href="https://nevis.nekoweb.org/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Lyra’s life ✦
+        </a>
+        <a
+          className="quiet-link"
+          href="https://lyradossier.vercel.app/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Lyra’s portfolio ↗
+        </a>
+      </div>
       <Link className="wander-link" to="/">
         back to the garden ↗
       </Link>

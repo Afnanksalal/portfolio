@@ -60,7 +60,16 @@ export default function Index() {
         </main>
         <div className="garden-footer">
           <p className="art-note handwritten">
-            flowers from my best friend, Lyra ♡
+            flowers from my best friend,{" "}
+            <a
+              className="artist-link"
+              href="https://lyradossier.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Lyra
+            </a>{" "}
+            ♡
           </p>
           <p className="hover-note">
             <span className="pointer-hint">
@@ -179,7 +188,16 @@ export default function Index() {
               afnanksalal@gmail.com
             </a>
             <p className="postcard-credit handwritten">
-              another little garden by Lyra ♡
+              another little garden by{" "}
+              <a
+                className="artist-link"
+                href="https://lyradossier.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Lyra
+              </a>{" "}
+              ♡
             </p>
           </div>
         </div>
@@ -190,8 +208,24 @@ export default function Index() {
           </p>
           <div>
             <Link to="/art">flowers by Lyra ♡</Link>
+            <a
+              href="https://nevis.nekoweb.org/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Lyra’s life
+            </a>
+            <a
+              href="https://lyradossier.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Lyra’s portfolio
+            </a>
             <a href="https://github.com/Afnanksalal">GitHub</a>
             <a href="https://twitter.com/afnanksalal">Twitter</a>
+            <a href="https://www.linkedin.com/in/afnanksalal/">LinkedIn</a>
+            <a href="https://www.instagram.com/afnanksalal/">Instagram</a>
             <a href="#home">back to the flowers ↑</a>
           </div>
         </div>
