@@ -1,37 +1,78 @@
 import { useEffect, useRef } from "react";
-export default function FlowerGarden({ bloom }: { bloom: boolean }) {
+
+export default function FlowerGarden() {
   const ref = useRef<HTMLCanvasElement>(null);
+  const linesRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
     const canvas = ref.current,
-      ctx = canvas?.getContext("2d");
-    if (!canvas || !ctx) return;
+      lines = linesRef.current;
+    const ctx = canvas?.getContext("2d"),
+      pencil = lines?.getContext("2d");
+    if (!canvas || !lines || !ctx || !pencil) return;
     const mask = document.createElement("canvas"),
       ink = mask.getContext("2d");
     if (!ink) return;
-    const image = new Image();
+    const image = new Image(),
+      drawing = new Image();
     let frame = 0,
       disposed = false,
-      ready = false,
       last = 0,
       width = 0,
       height = 0;
     const points: { x: number; y: number; time: number }[] = [];
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mobile = window.matchMedia("(max-width: 700px)");
+
+    // Recompose the four original flowers on phones, rather than enlarging
+    // the landscape sheet until most of its artwork is outside the viewport.
+    const paint = (
+      context: CanvasRenderingContext2D,
+      source: HTMLImageElement,
+    ) => {
+      if (mobile.matches) {
+        const size = width * 0.49;
+        const flowers = [
+          { crop: [185, 30, 550, 430], x: 0, y: 112 },
+          { crop: [1140, 12, 520, 430], x: width - size, y: 118 },
+          { crop: [395, 560, 575, 510], x: 0, y: height - 240 },
+          { crop: [1265, 490, 520, 435], x: width - size, y: height - 225 },
+        ];
+        for (const {
+          crop: [sx, sy, sw, sh],
+          x,
+          y,
+        } of flowers) {
+          context.drawImage(
+            source,
+            sx,
+            sy,
+            sw,
+            sh,
+            x,
+            y,
+            size,
+            (size * sh) / sw,
+          );
+        }
+      } else {
+        const scale = Math.max(width / source.width, height / source.height);
+        const w = source.width * scale,
+          h = source.height * scale;
+        context.drawImage(source, (width - w) / 2, (height - h) / 2, w, h);
+      }
+    };
     const draw = (time: number) => {
       frame = 0;
-      if (!ready || disposed) return;
+      if (disposed || !image.complete || !image.naturalWidth) return;
       ctx.clearRect(0, 0, width, height);
-      const scale = Math.max(width / image.width, height / image.height),
-        w = image.width * scale,
-        h = image.height * scale;
       ctx.globalCompositeOperation = "source-over";
-      ctx.drawImage(image, (width - w) / 2, (height - h) / 2, w, h);
-      if (!bloom) {
+      paint(ctx, image);
+      if (!reduced.matches) {
         ink.clearRect(0, 0, width, height);
         while (points.length && time - points[0].time > 2200) points.shift();
         for (const p of points) {
-          const life = Math.max(0, 1 - (time - p.time) / 2200),
-            r = Math.min(width * 0.23, 210) * (0.8 + 0.2 * life);
+          const life = Math.max(0, 1 - (time - p.time) / 2200);
+          const r = Math.min(width * 0.35, 210) * (0.8 + 0.2 * life);
           const gradient = ink.createRadialGradient(p.x, p.y, 0, p.x, p.y, r);
           gradient.addColorStop(0, `rgba(0,0,0,${life})`);
           gradient.addColorStop(0.55, `rgba(0,0,0,${life * 0.9})`);
@@ -42,7 +83,8 @@ export default function FlowerGarden({ bloom }: { bloom: boolean }) {
         ctx.globalCompositeOperation = "destination-in";
         ctx.drawImage(mask, 0, 0, mask.width, mask.height, 0, 0, width, height);
       }
-      if (points.length && !bloom) frame = requestAnimationFrame(draw);
+      if (points.length && !reduced.matches)
+        frame = requestAnimationFrame(draw);
     };
     const schedule = () => {
       if (!frame) frame = requestAnimationFrame(draw);
@@ -52,18 +94,22 @@ export default function FlowerGarden({ bloom }: { bloom: boolean }) {
       width = rect.width;
       height = rect.height;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = Math.round(width * dpr);
-      canvas.height = Math.round(height * dpr);
-      mask.width = canvas.width;
-      mask.height = canvas.height;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ink.setTransform(dpr, 0, 0, dpr, 0, 0);
+      for (const element of [canvas, lines, mask]) {
+        element.width = Math.round(width * dpr);
+        element.height = Math.round(height * dpr);
+      }
+      for (const context of [ctx, pencil, ink])
+        context.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (drawing.complete && drawing.naturalWidth) {
+        paint(pencil, drawing);
+        canvas.parentElement!.dataset.ready = "true";
+      }
       schedule();
     };
     const move = (e: PointerEvent) => {
-      if (bloom || reduced.matches || e.pointerType === "touch") return;
+      if (reduced.matches) return;
       const now = performance.now();
-      if (now - last < 28) return;
+      if (e.type === "pointermove" && now - last < 28) return;
       last = now;
       const rect = canvas.getBoundingClientRect();
       points.push({
@@ -77,23 +123,26 @@ export default function FlowerGarden({ bloom }: { bloom: boolean }) {
     const observer = new ResizeObserver(resize);
     observer.observe(parent);
     parent.addEventListener("pointermove", move);
-    image.onload = () => {
-      ready = true;
-      resize();
-    };
+    parent.addEventListener("pointerdown", move);
+    reduced.addEventListener("change", schedule);
+    image.onload = drawing.onload = resize;
+    drawing.src = "/art/lyra-lines.png";
     image.src = "/art/lyra-color.png";
     return () => {
       disposed = true;
       cancelAnimationFrame(frame);
       observer.disconnect();
       parent.removeEventListener("pointermove", move);
-      image.onload = null;
+      parent.removeEventListener("pointerdown", move);
+      reduced.removeEventListener("change", schedule);
+      image.onload = drawing.onload = null;
     };
-  }, [bloom]);
+  }, []);
   return (
     <div className="flower-art" aria-hidden="true">
       <img src="/art/lyra-lines.png" alt="" />
-      <canvas ref={ref} />
+      <canvas className="mobile-flower-lines" ref={linesRef} />
+      <canvas className="flower-colors" ref={ref} />
     </div>
   );
 }

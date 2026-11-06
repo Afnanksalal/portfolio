@@ -8,9 +8,9 @@ Personal homepage redesign on `redesign/lyras-garden`. The original React/Vite s
 
 ## Art and interaction
 
-The two original drawings in `public/art/` were provided by Afnan and drawn by his friend Lyra. Preserve the originals and the visible credit. They are aligned with identical centered cover transforms. A Canvas 2D mask reveals the colored drawing in a soft cursor trail, then fades back to the pencil drawing over 2.2 seconds. Animation stops when no trail remains. Pixel density is capped at 2. No WebGL dependency is needed for this image-to-image effect.
+The two original drawings in `public/art/` were provided by Afnan and drawn by his friend Lyra. Preserve the originals and the visible credit. On desktop they are aligned with identical centered cover transforms. On phones all four flowers are recomposed around the introduction using matching source rectangles in both drawings. A Canvas 2D mask reveals the colored drawing in a soft cursor trail, then fades back to the pencil drawing over 2.2 seconds. Animation stops when no trail remains. Pixel density is capped at 2. No WebGL dependency is needed for this image-to-image effect.
 
-The bloom button works with touch and keyboard and exposes its state with `aria-pressed`. Reduced motion disables the cursor animation; the explicit bloom control still works. The line drawing stays visible if the canvas or colored image cannot load.
+Bloom is triggered directly by hovering, or touching/dragging on phones, with no button. Touch handlers preserve normal scrolling. Reduced motion shows static colored artwork without the trail animation. The line drawing stays visible if the canvas or colored image cannot load.
 
 ## Design
 

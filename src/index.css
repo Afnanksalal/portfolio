@@ -203,7 +203,7 @@ h1 {
 }
 .garden-footer {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: end;
   gap: 20px;
   padding: 26px 5.2% 38px;
@@ -213,25 +213,11 @@ h1 {
   transform: rotate(-3deg);
   max-width: 230px;
 }
-.bloom-button {
-  border: 1px solid #736a7970;
-  background: #e5e3d6b8;
-  border-radius: 30px;
-  min-height: 44px;
-  padding: 9px 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 13px;
+.touch-hint {
+  display: none;
 }
-.bloom-button:hover,
-.bloom-button[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--pale);
-}
-.bloom-button span {
-  font-size: 22px;
+.mobile-flower-lines {
+  display: none;
 }
 .hover-note {
   text-align: right;
@@ -366,7 +352,7 @@ h2 {
 }
 @media (max-width: 700px) {
   .garden {
-    min-height: 790px;
+    min-height: 900px;
     max-height: 1050px;
   }
   .site-header {
@@ -420,11 +406,21 @@ h2 {
     max-width: 155px;
   }
   .hover-note {
+    font-size: 11px;
+    max-width: 130px;
+    padding-bottom: 0;
+  }
+  .pointer-hint {
     display: none;
   }
-  .bloom-button {
-    padding: 8px 14px;
-    font-size: 12px;
+  .touch-hint {
+    display: inline;
+  }
+  .mobile-flower-lines {
+    display: block;
+  }
+  .flower-art[data-ready] img {
+    opacity: 0;
   }
   .section-wrap {
     padding: 65px 26px;

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import FlowerGarden from "@/components/FlowerGarden";
 const projects = [
   [
@@ -27,14 +26,13 @@ const projects = [
   ],
 ];
 export default function Index() {
-  const [bloom, setBloom] = useState(false);
   return (
     <>
       <a className="skip-link" href="#about">
         Skip to the introduction
       </a>
       <section className="garden" id="home" aria-label="Afnan’s homepage">
-        <FlowerGarden bloom={bloom} />
+        <FlowerGarden />
         <header className="site-header">
           <a className="signature" href="#home" aria-label="Afnan, home">
             afnan<span aria-hidden="true">✳</span>
@@ -66,15 +64,14 @@ export default function Index() {
           <p className="art-note handwritten">
             flowers from my best friend, Lyra ♡
           </p>
-          <button
-            className="bloom-button"
-            aria-pressed={bloom}
-            onClick={() => setBloom(!bloom)}
-          >
-            <span aria-hidden="true">✿</span>
-            {bloom ? "back to the sketch" : "let it bloom"}
-          </button>
-          <p className="hover-note">a little color follows your cursor</p>
+          <p className="hover-note">
+            <span className="pointer-hint">
+              hover over the flowers for a little color
+            </span>
+            <span className="touch-hint">
+              touch the flowers for a little color
+            </span>
+          </p>
         </div>
       </section>
       <section
