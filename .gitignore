@@ -25,3 +25,10 @@ dist-ssr
 
 # Local browser verification
 .playwright-cli/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+coverage/
+*.tsbuildinfo
