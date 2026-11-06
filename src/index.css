@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600&family=Kalam:wght@300;400&family=Lora:wght@400;500&display=swap");
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
 .postcard-mobile-art {
   display: none;
 }
@@ -473,9 +471,6 @@ h2 {
     max-width: 130px;
     padding-bottom: 0;
   }
-  .pointer-hint {
-    display: none;
-  }
   .touch-hint {
     display: inline;
   }
@@ -581,11 +576,6 @@ body::-webkit-scrollbar {
   color: var(--plum);
   margin-bottom: 12px;
 }
-.postcard-message .postcard-credit {
-  margin-top: 28px;
-  margin-bottom: 0;
-  font-size: 17px;
-}
 .hello .footer-bottom {
   margin-top: 35px;
   padding: 0 10px;
@@ -622,10 +612,6 @@ body::-webkit-scrollbar {
   }
   .postcard-message .email-link {
     font-size: 15px;
-  }
-  .postcard-message .postcard-credit {
-    font-size: 15px;
-    margin-top: 22px;
   }
   .hello .footer-bottom {
     margin-top: 35px;
@@ -691,11 +677,6 @@ body::-webkit-scrollbar {
   margin-top: 25px;
   font-size: 22px;
   color: var(--plum);
-}
-.art-thanks {
-  font-size: 24px;
-  max-width: 600px;
-  line-height: 1.6;
 }
 .footer-bottom > div {
   flex-wrap: wrap;

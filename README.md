@@ -1,73 +1,83 @@
-# Welcome to your Lovable project
+# Afnan’s little corner
 
-## Project info
+My personal website: things I’m building, a little about me, and a garden of lilies drawn by my best friend, Lyra.
 
-**URL**: https://lovable.dev/projects/d7947ed8-1c15-453c-83fc-9e274bf84c50
+**[Visit the site](https://portfolio.afnan.codes)** · **[Meet the artist](https://portfolio.afnan.codes/art)**
 
-## How can I edit this code?
+![Lilies drawn by Lyra](public/art/lyra-postcard.png)
 
-There are several ways of editing your application.
+## The site
 
-**Use Lovable**
+- Lilies reveal their color on hover or touch.
+- A signed illustration slides away to welcome visitors.
+- A floating glass navigation bar refracts the artwork behind it, with a frosted fallback for other browsers.
+- The homepage features Genmotion, Co-op, BreachScope, and Frag.
+- Lyra’s gallery introduces **Morana, Isolde, Violet, and Inara**.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d7947ed8-1c15-453c-83fc-9e274bf84c50) and start prompting.
+Built with React, TypeScript, Vite, and Framer Motion. The color reveal uses Canvas 2D; the rest is CSS. Tailwind provides the base CSS reset. There is no backend, account system, or API key setup.
 
-Changes made via Lovable will be committed automatically to this repo.
+## Run locally
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Use Node.js 22.12 or later and npm.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+git clone https://github.com/Afnanksalal/portfolio.git
+cd portfolio
+npm ci
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open [localhost:8080](http://localhost:8080).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+| Command             | Purpose                                               |
+| ------------------- | ----------------------------------------------------- |
+| `npm run dev`       | Start the development server                          |
+| `npm run typecheck` | Check application and build configuration types       |
+| `npm run lint`      | Run ESLint with zero warnings allowed                 |
+| `npm run build`     | Type-check and create the production build in `dist/` |
+| `npm run preview`   | Serve the production build locally                    |
 
-**Use GitHub Codespaces**
+## Where things live
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```text
+src/
+  components/       Lily artwork, hover reveal, and glass navigation
+  pages/            Homepage, Lyra’s gallery, and not-found page
+  App.tsx           Routes and the welcome transition
+  index.css         Visual styles and responsive layouts
+public/
+  art/              Lyra’s original drawings
+  _redirects        Netlify fallback for client-side routes
+docs/
+  design.md         Visual and interaction decisions
+  verification.md   Verification notes
+```
 
-## What technologies are used for this project?
+Edit the introduction, project list, and social links in `src/pages/Index.tsx`. Lyra’s gallery and site links are in `src/pages/Art.tsx`. Artwork names and SVG view boxes are in `src/components/LyraFlower.tsx`.
 
-This project is built with:
+## Artwork
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+All lily illustrations are by **Lyra**. Her drawings give this site its identity.
 
-## How can I deploy this project?
+- [Lyra’s personal site](https://nevis.nekoweb.org/)
+- [Lyra’s portfolio](https://lyradossier.vercel.app/)
 
-Simply open [Lovable](https://lovable.dev/projects/d7947ed8-1c15-453c-83fc-9e274bf84c50) and click on Share -> Publish.
+The original image exports are preserved in `public/art/`. Please ask Lyra before reusing her artwork in another project.
 
-## Can I connect a custom domain to my Lovable project?
+## Deployment
 
-Yes, you can!
+The production site is hosted on Netlify at [portfolio.afnan.codes](https://portfolio.afnan.codes). Pushes to `main` trigger deployment.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Node version: `22`, also recorded in `.nvmrc`
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Keep `public/_redirects` so opening or refreshing `/art` works. GitHub Actions runs linting and the production build for pull requests and pushes to `main`.
+
+## Contributing
+
+Bug reports and focused improvements are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the development checks and [the design notes](docs/design.md) before changing the visual direction.
+
+## License
+
+Source code and documentation are available under the [MIT License](LICENSE). Lyra’s original artwork is excluded from that license; see [the artwork credits](public/art/README.md).
