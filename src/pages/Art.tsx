@@ -13,9 +13,9 @@ export default function Art() {
         back to Afnan’s corner
       </Link>
       <p className="handwritten margin-note">
-        a page for the person who drew the flowers
+        a page for the person who drew the lilies
       </p>
-      <h1>Flowers from Lyra.</h1>
+      <h1>Lilies from Lyra.</h1>
       <p className="art-intro">
         My best friend drew these for me. They became the garden around this
         little corner of the internet.
@@ -34,10 +34,10 @@ export default function Art() {
               <figcaption className="handwritten">
                 {
                   [
-                    "the first little sketch",
-                    "a little blue",
-                    "a little violet",
-                    "a little mint",
+                    "a pencil lily",
+                    "a blue lily",
+                    "a violet lily",
+                    "a mint lily",
                   ][i]
                 }
               </figcaption>
@@ -46,8 +46,8 @@ export default function Art() {
         )}
       </div>
       <p className="handwritten art-thanks">
-        All flower drawings by Lyra. Thank you for making this place feel like
-        me. ♡
+        All lily drawings by Lyra. Thank you for making this place feel like me.
+        ♡
       </p>
       <div className="artist-destinations">
         <a

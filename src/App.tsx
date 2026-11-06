@@ -58,10 +58,10 @@ export default function App() {
         >
           <img
             src="/art/lyra-welcome.png"
-            alt="Afnan K Salal, handwritten by Lyra and framed with her flowers"
+            alt="Afnan K Salal, handwritten by Lyra and framed with her lilies"
           />
           <p>
-            flowers by Lyra <span aria-hidden="true">♡</span>
+            lilies by Lyra <span aria-hidden="true">♡</span>
           </p>
         </motion.div>
       )}

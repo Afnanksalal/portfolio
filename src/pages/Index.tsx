@@ -60,7 +60,7 @@ export default function Index() {
         </main>
         <div className="garden-footer">
           <p className="art-note handwritten">
-            flowers from my best friend,{" "}
+            lilies from my best friend,{" "}
             <a
               className="artist-link"
               href="https://lyradossier.vercel.app/"
@@ -73,10 +73,10 @@ export default function Index() {
           </p>
           <p className="hover-note">
             <span className="pointer-hint">
-              hover over the flowers for a little color
+              hover over the lilies for a little color
             </span>
             <span className="touch-hint">
-              touch the flowers for a little color
+              touch the lilies for a little color
             </span>
           </p>
         </div>
@@ -207,7 +207,7 @@ export default function Index() {
             by.
           </p>
           <div>
-            <Link to="/art">flowers by Lyra ♡</Link>
+            <Link to="/art">lilies by Lyra ♡</Link>
             <a
               href="https://nevis.nekoweb.org/"
               target="_blank"
@@ -226,7 +226,7 @@ export default function Index() {
             <a href="https://twitter.com/afnanksalal">Twitter</a>
             <a href="https://www.linkedin.com/in/afnanksalal/">LinkedIn</a>
             <a href="https://www.instagram.com/afnanksalal/">Instagram</a>
-            <a href="#home">back to the flowers ↑</a>
+            <a href="#home">back to the lilies ↑</a>
           </div>
         </div>
       </footer>
