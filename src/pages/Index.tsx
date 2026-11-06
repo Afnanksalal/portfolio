@@ -1,48 +1,46 @@
 import FlowerGarden from "@/components/FlowerGarden";
+import GlassNav from "@/components/GlassNav";
+import LyraFlower, { FlowerName } from "@/components/LyraFlower";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 const projects = [
   [
-    "Acadly",
-    "A place for students to trade, learn, and find each other.",
-    "campus & community",
-    "Acadly",
+    "Genmotion",
+    "A motion design engine where agents build the scene and you direct the details.",
+    "native motion & creative tools",
+    "genmotion",
   ],
   [
     "Co-op",
-    "What happens when a few AI models think something through together?",
-    "an experiment in AI",
+    "A local-first workspace for running a business, with AI and your files close at hand.",
+    "business software, on your machine",
     "co-op",
   ],
   [
-    "TenderTalks",
-    "A home for podcasts and the people who listen to them.",
-    "made for listening",
-    "tendertalks",
+    "BreachScope",
+    "Finding weak spots in software supply chains, dependencies, and toolchains.",
+    "security & supply chains",
+    "BreachScope",
   ],
   [
     "Frag",
-    "An experimental language for systems and robotics, written in Rust.",
-    "close to the hardware",
+    "A small hardware description language compiler in Rust, with Verilog output and simulation.",
+    "a language for hardware",
     "frag",
   ],
 ];
 export default function Index() {
+  useEffect(() => {
+    if (!window.location.hash) window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
   return (
     <>
       <a className="skip-link" href="#about">
         Skip to the introduction
       </a>
+      <GlassNav />
       <section className="garden" id="home" aria-label="Afnan’s homepage">
         <FlowerGarden />
-        <header className="site-header">
-          <a className="signature" href="#home" aria-label="Afnan, home">
-            afnan<span aria-hidden="true">✳</span>
-          </a>
-          <nav aria-label="Main navigation">
-            <a href="#about">a little about me</a>
-            <a href="#things">things I've made</a>
-            <a href="#hello">say hello</a>
-          </nav>
-        </header>
         <main className="intro" id="about">
           <p className="handwritten greeting">oh, hey. you found me.</p>
           <h1>I'm Afnan.</h1>
@@ -96,7 +94,7 @@ export default function Index() {
           </a>
         </div>
         <div className="project-list">
-          {projects.map(([name, note, kind, repo]) => (
+          {projects.map(([name, note, kind, repo], index) => (
             <a
               className="project"
               key={name}
@@ -104,6 +102,11 @@ export default function Index() {
               target="_blank"
               rel="noreferrer"
             >
+              <LyraFlower
+                name={
+                  (["pencil", "blue", "violet", "mint"] as FlowerName[])[index]
+                }
+              />
               <div className="project-name">
                 <h3>{name}</h3>
                 <span>{kind}</span>
@@ -125,12 +128,60 @@ export default function Index() {
         </aside>
       </section>
       <footer className="hello section-wrap" id="hello">
-        <div>
-          <p className="handwritten">the internet is nicer with friends.</p>
-          <h2>Leave a little hello.</h2>
-          <a className="email-link" href="mailto:afnanksalal@gmail.com">
-            afnanksalal@gmail.com
-          </a>
+        <div className="hello-postcard">
+          <img
+            className="postcard-art"
+            src="/art/lyra-postcard.png"
+            alt=""
+            loading="lazy"
+          />
+          <svg
+            className="postcard-mobile-art"
+            viewBox="0 0 390 520"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <svg x="0" y="0" width="190" height="145" viewBox="35 30 550 430">
+              <image href="/art/lyra-postcard.png" width="1920" height="1080" />
+            </svg>
+            <svg
+              x="200"
+              y="5"
+              width="190"
+              height="145"
+              viewBox="1360 15 510 430"
+            >
+              <image href="/art/lyra-postcard.png" width="1920" height="1080" />
+            </svg>
+            <svg
+              x="0"
+              y="350"
+              width="195"
+              height="170"
+              viewBox="85 570 590 475"
+            >
+              <image href="/art/lyra-postcard.png" width="1920" height="1080" />
+            </svg>
+            <svg
+              x="195"
+              y="350"
+              width="195"
+              height="170"
+              viewBox="1400 640 500 420"
+            >
+              <image href="/art/lyra-postcard.png" width="1920" height="1080" />
+            </svg>
+          </svg>
+          <div className="postcard-message">
+            <p className="handwritten">the internet is nicer with friends.</p>
+            <h2>Leave a little hello.</h2>
+            <a className="email-link" href="mailto:afnanksalal@gmail.com">
+              afnanksalal@gmail.com
+            </a>
+            <p className="postcard-credit handwritten">
+              another little garden by Lyra ♡
+            </p>
+          </div>
         </div>
         <div className="footer-bottom">
           <p>
@@ -138,6 +189,7 @@ export default function Index() {
             by.
           </p>
           <div>
+            <Link to="/art">flowers by Lyra ♡</Link>
             <a href="https://github.com/Afnanksalal">GitHub</a>
             <a href="https://twitter.com/afnanksalal">Twitter</a>
             <a href="#home">back to the flowers ↑</a>

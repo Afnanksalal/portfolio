@@ -20,7 +20,7 @@ export default function FlowerGarden() {
       width = 0,
       height = 0;
     const points: { x: number; y: number; time: number }[] = [];
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let pointer: { x: number; y: number } | null = null;
     const mobile = window.matchMedia("(max-width: 700px)");
 
     // Recompose the four original flowers on phones, rather than enlarging
@@ -67,7 +67,11 @@ export default function FlowerGarden() {
       ctx.clearRect(0, 0, width, height);
       ctx.globalCompositeOperation = "source-over";
       paint(ctx, image);
-      if (!reduced.matches) {
+      {
+        if (pointer && time - last > 60) {
+          points.push({ ...pointer, time });
+          last = time;
+        }
         ink.clearRect(0, 0, width, height);
         while (points.length && time - points[0].time > 2200) points.shift();
         for (const p of points) {
@@ -83,8 +87,7 @@ export default function FlowerGarden() {
         ctx.globalCompositeOperation = "destination-in";
         ctx.drawImage(mask, 0, 0, mask.width, mask.height, 0, 0, width, height);
       }
-      if (points.length && !reduced.matches)
-        frame = requestAnimationFrame(draw);
+      if (points.length || pointer) frame = requestAnimationFrame(draw);
     };
     const schedule = () => {
       if (!frame) frame = requestAnimationFrame(draw);
@@ -107,11 +110,12 @@ export default function FlowerGarden() {
       schedule();
     };
     const move = (e: PointerEvent) => {
-      if (reduced.matches) return;
       const now = performance.now();
       if (e.type === "pointermove" && now - last < 28) return;
       last = now;
       const rect = canvas.getBoundingClientRect();
+      if (e.pointerType !== "touch")
+        pointer = { x: e.clientX - rect.left, y: e.clientY - rect.top };
       points.push({
         x: e.clientX - rect.left,
         y: e.clientY - rect.top,
@@ -120,11 +124,14 @@ export default function FlowerGarden() {
       schedule();
     };
     const parent = canvas.parentElement!.parentElement!;
+    const leave = () => {
+      pointer = null;
+    };
     const observer = new ResizeObserver(resize);
     observer.observe(parent);
     parent.addEventListener("pointermove", move);
     parent.addEventListener("pointerdown", move);
-    reduced.addEventListener("change", schedule);
+    parent.addEventListener("pointerleave", leave);
     image.onload = drawing.onload = resize;
     drawing.src = "/art/lyra-lines.png";
     image.src = "/art/lyra-color.png";
@@ -134,7 +141,7 @@ export default function FlowerGarden() {
       observer.disconnect();
       parent.removeEventListener("pointermove", move);
       parent.removeEventListener("pointerdown", move);
-      reduced.removeEventListener("change", schedule);
+      parent.removeEventListener("pointerleave", leave);
       image.onload = drawing.onload = null;
     };
   }, []);

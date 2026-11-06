@@ -1,21 +1,21 @@
 # Lyra’s garden
 
-Personal homepage redesign on `redesign/lyras-garden`. The original React/Vite setup and project/contact links are retained.
+Personal homepage on `redesign/lyras-garden`. React, Vite, TypeScript. Run `npm ci` then `npm run dev`; build with `npm run build`.
 
-## Run
+## Visual direction
 
-`npm ci` then `npm run dev`. Production: `npm run build`.
+Lyra’s original flowers define the site. Paper #d2d1c0, ink #373344, plum #66536e, muted text #625d65. Lora headings, DM Sans body, Kalam notes. Keep the copy personal and concise. No résumé or hiring presentation.
 
-## Art and interaction
+The unsigned landscape drawing frames the contact section as a postcard. Phone layouts recompose its four flowers without stretching them. The navbar floats above the page with a generated rounded-lens displacement map in Chromium; other browsers use a blur/saturation fallback. Only the backdrop is distorted, not the links. Scrollbars are hidden without disabling scrolling.
 
-The two original drawings in `public/art/` were provided by Afnan and drawn by his friend Lyra. Preserve the originals and the visible credit. On desktop they are aligned with identical centered cover transforms. On phones all four flowers are recomposed around the introduction using matching source rectangles in both drawings. A Canvas 2D mask reveals the colored drawing in a soft cursor trail, then fades back to the pencil drawing over 2.2 seconds. Animation stops when no trail remains. Pixel density is capped at 2. No WebGL dependency is needed for this image-to-image effect.
+## Artwork and interaction
 
-Bloom is triggered directly by hovering, or touching/dragging on phones, with no button. Touch handlers preserve normal scrolling. Reduced motion shows static colored artwork without the trail animation. The line drawing stays visible if the canvas or colored image cannot load.
+Original PNGs are preserved in public/art. The four individual transparent exports are displayed with SVG view boxes, keeping their alpha and avoiding empty full-sheet margins. Each project gets a flower; /art gives Lyra a dedicated credit/gallery page linked from the footer.
 
-## Design
+The hero uses aligned line/color drawings and a Canvas 2D mask. Hover reveals color and holds it while the pointer remains; leaving fades the trail over 2.2 seconds. Touch reveals color without preventing scrolling. Per Afnan’s explicit preference, hover and the Framer Motion loader stay enabled even when the browser reports reduced motion.
 
-Paper `#d2d1c0`, ink `#373344`, plum `#66536e`, muted text `#625d65`, rules `#b8b6a8`, light paper `#e5e3d6`. Lora for headings, DM Sans for reading, Kalam for short notes; system fallbacks remain available. Lyra’s drawing is the defining visual. Keep text restrained and avoid resume, hiring, skill-cloud, stock photo, and dashboard treatments.
+The welcome screen shows Lyra’s signed drawing, waits for the art assets (1.6 seconds minimum, 5 seconds maximum), then slides upward over 1.1 seconds to uncover the homepage. Underlying content is inert and scrolling locked only until the slide finishes.
 
-The homepage is for visitors to get to know Afnan, browse a few projects, or say hello. Keep these links straightforward on small screens and maintain visible keyboard focus. Project descriptions come from the previous portfolio; the introduction is editable personal copy.
+## Content
 
-The welcome screen uses Lyra's original signed flower drawing in full (contain, never cropped). It waits for the three art assets with a 1.6-second minimum and a 5-second maximum, then fades out over 450ms. Reduced motion skips the fade. Underlying content is inert and scrolling locked only while the screen is visible.
+Featured repositories are Genmotion, Co-op, BreachScope, and Frag. Names and descriptions were checked against Afnan’s GitHub profile and current repository READMEs. Preserve the original contact destinations and visible credit to Lyra.
